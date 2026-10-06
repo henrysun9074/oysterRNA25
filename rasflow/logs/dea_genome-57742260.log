@@ -1,0 +1,30 @@
+Building DAG of jobs...
+MissingInputException in line 18 of /work/hs325/bass25/rasflow/workflow/dea_genome.rules:
+Missing input files for rule combineSamples:
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/WC_YEL1_23Jul25_Gill_S158_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/DAF_YEL3_25Jul25_Gill_S162_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/CMT_YEL2_24Jul25_Gill_S145_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/WC_YEL2_25Jun25_Gill_S163_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/CMT_YEL2_9Jul25_Gill_S167_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/CMT_YEL1_9Jul25_Gill_S166_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/WC_YEL3_23Jul25_Gill_S146_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/WC_YEL1_25Jun25_Gill_S160_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/CMT_YEL1_24Jul25_Gill_S151_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/DAF_YEL3_27Jun25_Gill_S161_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/CMT_YEL3_24Jul25_Gill_S159_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/CMT_YEL3_26Jun25_Gill_S148_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/DAF_YEL1_25Jul25_Gill_S152_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/DAF_YEL1_27Jun25_Gill_S149_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/DAF_YEL1_11Jul25_Gill_S157_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/CMT_YEL3_9Jul25_Gill_S168_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/WC_YEL1_9Jul25_Gill_S156_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/WC_YEL3_9Jul25_Gill_S150_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/WC_YEL3_25Jun25_Gill_S154_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/CMT_YEL2_26Jun25_Gill_S155_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/WC_YEL2_9Jul25_Gill_S144_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/DAF_YEL2_11Jul25_Gill_S147_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/DAF_YEL2_27Jun25_Gill_S143_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/DAF_YEL3_11Jul25_Gill_S169_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/WC_YEL2_23Jul25_Gill_S164_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/DAF_YEL2_25Jul25_Gill_S153_L007_count.tsv
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/countFile/CMT_YEL1_26Jun25_Gill_S165_L007_count.tsv

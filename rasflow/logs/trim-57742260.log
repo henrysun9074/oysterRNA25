@@ -1,0 +1,166 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	27	getReads
+	1	summaryReport
+	27	trim
+	56
+
+[Mon Oct  5 23:11:23 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/reads/DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/reads/DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+    jobid: 31
+    wildcards: sample=DAF_YEL2_27Jun25_Gill_S143_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL2_27Jun25_Gill_S143_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/reads/DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL2_27Jun25_Gill_S143_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/reads/DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz[0m
+[Mon Oct  5 23:11:55 2026]
+Finished job 31.
+1 of 56 steps (2%) done
+
+[Mon Oct  5 23:11:55 2026]
+rule trim:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/reads/DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/reads/DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/DAF_YEL2_27Jun25_Gill_S143_L007_R1_val_1.fq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/DAF_YEL2_27Jun25_Gill_S143_L007_R2_val_2.fq.gz
+    jobid: 4
+    wildcards: sample=DAF_YEL2_27Jun25_Gill_S143_L007
+
+trim_galore --fastqc -j 4 --paired --basename DAF_YEL2_27Jun25_Gill_S143_L007 -o /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/reads/DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/reads/DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Path to Cutadapt set as: 'cutadapt' (default)
+Cutadapt seems to be working fine (tested command 'cutadapt --version')
+Cutadapt version: 3.5
+Could not detect version of Python used by Cutadapt from the first line of Cutadapt (but found this: >>>#!/bin/sh<<<)
+Letting the (modified) Cutadapt deal with the Python version instead
+pigz 2.8
+Parallel gzip (pigz) detected. Proceeding with multicore (de)compression using 4 cores
+
+No quality encoding type selected. Assuming that the data provided uses Sanger encoded Phred scores (default)
+
+Output will be written into the directory: /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/
+Using user-specified basename (>>DAF_YEL2_27Jun25_Gill_S143_L007<<) instead of deriving the filename from the input file(s)
+
+
+AUTO-DETECTING ADAPTER TYPE
+===========================
+Attempting to auto-detect adapter type from the first 1 million sequences of the first file (>> /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/reads/DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz <<)
+
+Found perfect matches for the following adapter sequences:
+Adapter type	Count	Sequence	Sequences analysed	Percentage
+Illumina	33026	AGATCGGAAGAGC	1000000	3.30
+smallRNA	8	TGGAATTCTCGG	1000000	0.00
+Nextera	6	CTGTCTCTTATA	1000000	0.00
+Using Illumina adapter for trimming (count: 33026). Second best hit was smallRNA (count: 8)
+
+Writing report to '/work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz_trimming_report.txt'
+
+SUMMARISING RUN PARAMETERS
+==========================
+Input filename: /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/reads/DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Trimming mode: paired-end
+Trim Galore version: 0.6.2
+Cutadapt version: 3.5
+Python version: could not detect
+Number of cores used for trimming: 4
+Quality Phred score cutoff: 20
+Quality encoding type selected: ASCII+33
+Adapter sequence: 'AGATCGGAAGAGC' (Illumina TruSeq, Sanger iPCR; auto-detected)
+Maximum trimming error rate: 0.1 (default)
+Minimum required adapter overlap (stringency): 1 bp
+Minimum required sequence length for both reads before a sequence pair gets removed: 20 bp
+Running FastQC on the data once trimming has completed
+Output file(s) will be GZIP compressed
+
+Cutadapt seems to be fairly up-to-date (version 3.5). Setting -j 4
+Writing final adapter and quality trimmed output to DAF_YEL2_27Jun25_Gill_S143_L007_forward_trimmed.fq.gz
+
+
+  >>> Now performing quality (cutoff '-q 20') and adapter trimming in a single pass for the adapter sequence: 'AGATCGGAAGAGC' from file /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/reads/DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz <<< 
+This is cutadapt 3.5 with Python 3.6.7
+Command line parameters: -j 4 -e 0.1 -q 20 -O 1 -a AGATCGGAAGAGC /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/reads/DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Processing reads on 4 cores in single-end mode ...
+ERROR: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/cutadapt/pipeline.py", line 574, in run
+    for chunk_index, chunk in enumerate(dnaio.read_chunks(f, self.buffer_size)):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/dnaio/chunks.py", line 81, in read_chunks
+    bufend = f.readinto(memoryview(buf)[start:]) + start  # type: ignore
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/gzip.py", line 276, in read
+    return self._buffer.read(size)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/isal/igzip.py", line 265, in read
+    self._read_eof()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/gzip.py", line 501, in _read_eof
+    hex(self._crc)))
+OSError: CRC check failed 0x7f59 != 0x4bb39772
+
+ERROR: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/cutadapt/pipeline.py", line 574, in run
+    for chunk_index, chunk in enumerate(dnaio.read_chunks(f, self.buffer_size)):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/dnaio/chunks.py", line 81, in read_chunks
+    bufend = f.readinto(memoryview(buf)[start:]) + start  # type: ignore
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/gzip.py", line 276, in read
+    return self._buffer.read(size)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/isal/igzip.py", line 265, in read
+    self._read_eof()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/gzip.py", line 501, in _read_eof
+    hex(self._crc)))
+OSError: CRC check failed 0x7f59 != 0x4bb39772
+
+ERROR: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/cutadapt/pipeline.py", line 574, in run
+    for chunk_index, chunk in enumerate(dnaio.read_chunks(f, self.buffer_size)):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/dnaio/chunks.py", line 81, in read_chunks
+    bufend = f.readinto(memoryview(buf)[start:]) + start  # type: ignore
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/gzip.py", line 276, in read
+    return self._buffer.read(size)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/isal/igzip.py", line 265, in read
+    self._read_eof()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/gzip.py", line 501, in _read_eof
+    hex(self._crc)))
+OSError: CRC check failed 0x7f59 != 0x4bb39772
+
+ERROR: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/cutadapt/pipeline.py", line 641, in run
+    raise e
+OSError: CRC check failed 0x7f59 != 0x4bb39772
+
+Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/cutadapt", line 10, in <module>
+    sys.exit(main_cli())
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/cutadapt/__main__.py", line 877, in main_cli
+    main(sys.argv[1:])
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/cutadapt/__main__.py", line 942, in main
+    stats = r.run()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/cutadapt/pipeline.py", line 841, in run
+    raise e
+OSError: CRC check failed 0x7f59 != 0x4bb39772
+
+
+Cutadapt terminated with exit signal: '256'.
+Terminating Trim Galore run, please check error message(s) to get an idea what went wrong...
+
+[Mon Oct  5 23:12:08 2026]
+Error in rule trim:
+    jobid: 4
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/DAF_YEL2_27Jun25_Gill_S143_L007_R1_val_1.fq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/DAF_YEL2_27Jun25_Gill_S143_L007_R2_val_2.fq.gz
+
+RuleException:
+CalledProcessError in line 45 of /work/hs325/bass25/rasflow/workflow/trim.rules:
+Command ' set -euo pipefail;  trim_galore --fastqc -j 4 --paired --basename DAF_YEL2_27Jun25_Gill_S143_L007 -o /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/reads/DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/reads/DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz ' returned non-zero exit status 1.
+  File "/work/hs325/bass25/rasflow/workflow/trim.rules", line 45, in __rule_trim
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /work/hs325/bass25/rasflow/.snakemake/log/2026-10-05T231122.320883.snakemake.log

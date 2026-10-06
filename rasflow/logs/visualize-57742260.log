@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in line 43 of /work/hs325/bass25/rasflow/workflow/visualize.rules:
+Missing input files for rule plot:
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/dea/countGroup
+/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/genome/dea/DEA

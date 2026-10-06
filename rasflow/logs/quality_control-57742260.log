@@ -1571,3 +1571,1774 @@ Started analysis of WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
 Approx 5% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
 Approx 10% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
 Approx 15% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 20% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 25% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 30% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 35% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 40% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 45% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 50% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 55% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 60% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 65% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 70% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 75% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 80% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 85% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 90% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 95% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Analysis complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz.
+[Mon Oct  5 21:46:51 2026]
+Finished job 6.
+44 of 56 steps (79%) done
+
+[Mon Oct  5 21:46:51 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+    jobid: 54
+    wildcards: sample=CMT_YEL1_9Jul25_Gill_S166_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL1_9Jul25_Gill_S166_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL1_9Jul25_Gill_S166_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz[0m
+[Mon Oct  5 21:47:08 2026]
+Finished job 54.
+45 of 56 steps (80%) done
+
+[Mon Oct  5 21:47:08 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL1_9Jul25_Gill_S166_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL1_9Jul25_Gill_S166_L007_reverse_fastqc.html
+    jobid: 27
+    wildcards: sample=CMT_YEL1_9Jul25_Gill_S166_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Started analysis of CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 5% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 10% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 15% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 20% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 25% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 30% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 35% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 40% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 45% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 50% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 55% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 60% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 65% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 70% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 75% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 80% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 85% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 90% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Approx 95% complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Analysis complete for CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz
+Started analysis of CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 5% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 10% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 15% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 20% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 25% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 30% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 35% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 40% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 45% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 50% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 55% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 60% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 65% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 70% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 75% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 80% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 85% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 90% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Approx 95% complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Analysis complete for CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_9Jul25_Gill_S166_L007_forward.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_9Jul25_Gill_S166_L007_reverse.fastq.gz.
+[Mon Oct  5 22:05:34 2026]
+Finished job 27.
+46 of 56 steps (82%) done
+
+[Mon Oct  5 22:05:34 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+    jobid: 55
+    wildcards: sample=WC_YEL2_9Jul25_Gill_S144_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL2_9Jul25_Gill_S144_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL2_9Jul25_Gill_S144_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz[0m
+[Mon Oct  5 22:05:52 2026]
+Finished job 55.
+47 of 56 steps (84%) done
+
+[Mon Oct  5 22:05:52 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL2_9Jul25_Gill_S144_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL2_9Jul25_Gill_S144_L007_reverse_fastqc.html
+    jobid: 28
+    wildcards: sample=WC_YEL2_9Jul25_Gill_S144_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Started analysis of WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 5% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 10% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 15% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 20% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 25% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 30% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 35% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 40% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 45% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 50% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 55% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 60% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 65% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 70% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 75% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 80% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 85% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 90% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Approx 95% complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Analysis complete for WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz
+Started analysis of WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 5% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 10% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 15% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 20% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 25% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 30% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 35% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 40% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 45% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 50% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 55% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 60% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 65% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 70% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 75% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 80% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 85% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 90% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Approx 95% complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Analysis complete for WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_9Jul25_Gill_S144_L007_forward.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_9Jul25_Gill_S144_L007_reverse.fastq.gz.
+[Mon Oct  5 22:21:51 2026]
+Finished job 28.
+48 of 56 steps (86%) done
+
+[Mon Oct  5 22:21:51 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+    jobid: 37
+    wildcards: sample=DAF_YEL1_25Jul25_Gill_S152_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL1_25Jul25_Gill_S152_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL1_25Jul25_Gill_S152_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz[0m
+[Mon Oct  5 22:22:05 2026]
+Finished job 37.
+49 of 56 steps (88%) done
+
+[Mon Oct  5 22:22:05 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL1_25Jul25_Gill_S152_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL1_25Jul25_Gill_S152_L007_reverse_fastqc.html
+    jobid: 10
+    wildcards: sample=DAF_YEL1_25Jul25_Gill_S152_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Started analysis of DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 5% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 10% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 15% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 20% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 25% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 30% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 35% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 40% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 45% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 50% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 55% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 60% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 65% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 70% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 75% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 80% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 85% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 90% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Approx 95% complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Analysis complete for DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz
+Started analysis of DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 5% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 10% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 15% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 20% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 25% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 30% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 35% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 40% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 45% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 50% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 55% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 60% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 65% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 70% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 75% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 80% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 85% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 90% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Approx 95% complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Analysis complete for DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_25Jul25_Gill_S152_L007_forward.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_25Jul25_Gill_S152_L007_reverse.fastq.gz.
+[Mon Oct  5 22:37:11 2026]
+Finished job 10.
+50 of 56 steps (89%) done
+
+[Mon Oct  5 22:37:11 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+    jobid: 40
+    wildcards: sample=CMT_YEL2_9Jul25_Gill_S167_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL2_9Jul25_Gill_S167_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL2_9Jul25_Gill_S167_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz[0m
+[Mon Oct  5 22:37:31 2026]
+Finished job 40.
+51 of 56 steps (91%) done
+
+[Mon Oct  5 22:37:31 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL2_9Jul25_Gill_S167_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL2_9Jul25_Gill_S167_L007_reverse_fastqc.html
+    jobid: 13
+    wildcards: sample=CMT_YEL2_9Jul25_Gill_S167_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Started analysis of CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 5% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 10% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 15% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 20% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 25% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 30% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 35% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 40% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 45% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 50% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 55% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 60% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 65% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 70% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 75% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 80% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 85% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 90% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Approx 95% complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Analysis complete for CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz
+Started analysis of CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 5% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 10% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 15% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 20% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 25% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 30% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 35% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 40% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 45% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 50% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 55% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 60% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 65% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 70% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 75% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 80% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 85% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 90% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Approx 95% complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Analysis complete for CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_9Jul25_Gill_S167_L007_reverse.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_9Jul25_Gill_S167_L007_forward.fastq.gz.
+[Mon Oct  5 22:53:54 2026]
+Finished job 13.
+52 of 56 steps (93%) done
+
+[Mon Oct  5 22:53:54 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+    jobid: 45
+    wildcards: sample=DAF_YEL3_11Jul25_Gill_S169_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL3_11Jul25_Gill_S169_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL3_11Jul25_Gill_S169_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz[0m
+[Mon Oct  5 22:54:11 2026]
+Finished job 45.
+53 of 56 steps (95%) done
+
+[Mon Oct  5 22:54:11 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL3_11Jul25_Gill_S169_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL3_11Jul25_Gill_S169_L007_reverse_fastqc.html
+    jobid: 18
+    wildcards: sample=DAF_YEL3_11Jul25_Gill_S169_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Started analysis of DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 5% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 10% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 15% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 20% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 25% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 30% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 35% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 40% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 45% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 50% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 55% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 60% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 65% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 70% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 75% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 80% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 85% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 90% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Approx 95% complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Analysis complete for DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz
+Started analysis of DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 5% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 10% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 15% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 20% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 25% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 30% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 35% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 40% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 45% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 50% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 55% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 60% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 65% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 70% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 75% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 80% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 85% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 90% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Approx 95% complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Analysis complete for DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_11Jul25_Gill_S169_L007_forward.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_11Jul25_Gill_S169_L007_reverse.fastq.gz.
+[Mon Oct  5 23:10:57 2026]
+Finished job 18.
+54 of 56 steps (96%) done
+
+[Mon Oct  5 23:10:57 2026]
+rule summaryReport:
+    input: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL1_26Jun25_Gill_S165_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL2_26Jun25_Gill_S155_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL3_26Jun25_Gill_S148_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL1_9Jul25_Gill_S166_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL2_9Jul25_Gill_S167_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL3_9Jul25_Gill_S168_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL1_24Jul25_Gill_S151_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL2_24Jul25_Gill_S145_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL3_24Jul25_Gill_S159_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL1_27Jun25_Gill_S149_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL2_27Jun25_Gill_S143_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL3_27Jun25_Gill_S161_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL1_11Jul25_Gill_S157_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL2_11Jul25_Gill_S147_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL3_11Jul25_Gill_S169_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL1_25Jul25_Gill_S152_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL2_25Jul25_Gill_S153_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL3_25Jul25_Gill_S162_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL1_25Jun25_Gill_S160_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL2_25Jun25_Gill_S163_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL3_25Jun25_Gill_S154_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL1_9Jul25_Gill_S156_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL2_9Jul25_Gill_S144_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL3_9Jul25_Gill_S150_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL1_23Jul25_Gill_S158_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL2_23Jul25_Gill_S164_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL3_23Jul25_Gill_S146_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL1_26Jun25_Gill_S165_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL2_26Jun25_Gill_S155_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL3_26Jun25_Gill_S148_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL1_9Jul25_Gill_S166_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL2_9Jul25_Gill_S167_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL3_9Jul25_Gill_S168_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL1_24Jul25_Gill_S151_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL2_24Jul25_Gill_S145_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL3_24Jul25_Gill_S159_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL1_27Jun25_Gill_S149_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL2_27Jun25_Gill_S143_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL3_27Jun25_Gill_S161_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL1_11Jul25_Gill_S157_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL2_11Jul25_Gill_S147_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL3_11Jul25_Gill_S169_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL1_25Jul25_Gill_S152_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL2_25Jul25_Gill_S153_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL3_25Jul25_Gill_S162_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL1_25Jun25_Gill_S160_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL2_25Jun25_Gill_S163_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL3_25Jun25_Gill_S154_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL1_9Jul25_Gill_S156_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL2_9Jul25_Gill_S144_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL3_9Jul25_Gill_S150_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL1_23Jul25_Gill_S158_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL2_23Jul25_Gill_S164_L007_reverse_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL3_23Jul25_Gill_S146_L007_reverse_fastqc.html
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/report_quality_control.html
+    jobid: 1
+
+multiqc /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc --filename /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/report_quality_control.html
+/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/utils/config.py:45: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  configs = yaml.load(f)
+/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/utils/config.py:51: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  sp = yaml.load(f)
+[WARNING]         multiqc : MultiQC Version v1.35 now available!
+[INFO   ]         multiqc : This is MultiQC v1.5.dev0
+[INFO   ]         multiqc : Template    : default
+[INFO   ]         multiqc : Searching '/work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc'
+Searching 108 files..
+[ERROR  ]         multiqc : Oops! The 'afterqc' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module afterqc raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/afterqc/__init__.py", line 3, in <module>
+    from .afterqc import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/afterqc/afterqc.py", line 12, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'custom_content' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module custom_content raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/custom_content/__init__.py", line 3, in <module>
+    from .custom_content import *
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/custom_content/custom_content.py", line 14, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'conpair' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module conpair raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/conpair/__init__.py", line 3, in <module>
+    from .conpair import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/conpair/conpair.py", line 10, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'peddy' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module peddy raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/peddy/__init__.py", line 3, in <module>
+    from .peddy import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/peddy/peddy.py", line 11, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'methylQA' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module methylQA raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/methylQA/__init__.py", line 3, in <module>
+    from .methylQA import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/methylQA/methylQA.py", line 13, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'qualimap' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module qualimap raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/qualimap/__init__.py", line 3, in <module>
+    from .qualimap import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/qualimap/qualimap.py", line 11, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'preseq' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module preseq raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/preseq/__init__.py", line 3, in <module>
+    from .preseq import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/preseq/preseq.py", line 11, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'quast' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module quast raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/quast/__init__.py", line 3, in <module>
+    from .quast import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/quast/quast.py", line 12, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'qorts' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module qorts raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/qorts/__init__.py", line 3, in <module>
+    from .qorts import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/qorts/qorts.py", line 13, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'rna_seqc' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module rna_seqc raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/rna_seqc/__init__.py", line 3, in <module>
+    from .rna_seqc import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/rna_seqc/rna_seqc.py", line 10, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'rsem' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module rsem raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/rsem/__init__.py", line 3, in <module>
+    from .rsem import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/rsem/rsem.py", line 11, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'rseqc' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module rseqc raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/rseqc/__init__.py", line 3, in <module>
+    from .rseqc import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/rseqc/rseqc.py", line 9, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'busco' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module busco raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/busco/__init__.py", line 3, in <module>
+    from .busco import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/busco/busco.py", line 11, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'goleft_indexcov' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module goleft_indexcov raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/goleft_indexcov/__init__.py", line 3, in <module>
+    from .goleft_indexcov import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/goleft_indexcov/goleft_indexcov.py", line 11, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'disambiguate' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module disambiguate raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/disambiguate/__init__.py", line 3, in <module>
+    from .disambiguate import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/disambiguate/disambiguate.py", line 7, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'supernova' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module supernova raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/supernova/__init__.py", line 2, in <module>
+    from .supernova import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/supernova/supernova.py", line 12, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'deeptools' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module deeptools raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/deeptools/__init__.py", line 3, in <module>
+    from .deeptools import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/deeptools/deeptools.py", line 7, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'sargasso' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module sargasso raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/sargasso/__init__.py", line 3, in <module>
+    from .sargasso import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/sargasso/sargasso.py", line 11, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'verifybamid' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module verifybamid raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/verifybamid/__init__.py", line 3, in <module>
+    from .verifybamid import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/verifybamid/verifybamid.py", line 10, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'homer' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module homer raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/homer/__init__.py", line 3, in <module>
+    from .homer import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/homer/homer.py", line 8, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'macs2' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module macs2 raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/macs2/__init__.py", line 3, in <module>
+    from .macs2 import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/macs2/macs2.py", line 12, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'theta2' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module theta2 raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/theta2/__init__.py", line 3, in <module>
+    from .theta2 import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/theta2/theta2.py", line 11, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'snpeff' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module snpeff raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/snpeff/__init__.py", line 3, in <module>
+    from .snpeff import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/snpeff/snpeff.py", line 11, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'gatk' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module gatk raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/gatk/__init__.py", line 4, in <module>
+    from .gatk import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/gatk/gatk.py", line 8, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'htseq' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module htseq raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/htseq/__init__.py", line 3, in <module>
+    from .htseq import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/htseq/htseq.py", line 11, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'bcftools' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module bcftools raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/bcftools/__init__.py", line 3, in <module>
+    from .bcftools import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/bcftools/bcftools.py", line 8, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'featureCounts' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module featureCounts raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/featureCounts/__init__.py", line 3, in <module>
+    from .feature_counts import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/featureCounts/feature_counts.py", line 11, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'picard' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module picard raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/picard/__init__.py", line 3, in <module>
+    from .picard import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/picard/picard.py", line 10, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'prokka' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module prokka raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/prokka/__init__.py", line 2, in <module>
+    from .prokka import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/prokka/prokka.py", line 10, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'samblaster' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module samblaster raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/samblaster/__init__.py", line 3, in <module>
+    from .samblaster import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/samblaster/samblaster.py", line 12, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'samtools' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module samtools raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/samtools/__init__.py", line 3, in <module>
+    from .samtools import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/samtools/samtools.py", line 8, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'bamtools' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module bamtools raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/bamtools/__init__.py", line 3, in <module>
+    from .bamtools import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/bamtools/bamtools.py", line 9, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'jellyfish' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module jellyfish raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/jellyfish/__init__.py", line 3, in <module>
+    from .jellyfish import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/jellyfish/jellyfish.py", line 10, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'vcftools' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module vcftools raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/vcftools/__init__.py", line 2, in <module>
+    from .vcftools import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/vcftools/vcftools.py", line 8, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'bbmap' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module bbmap raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/bbmap/__init__.py", line 3, in <module>
+    from .bbmap import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/bbmap/bbmap.py", line 10, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'bismark' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module bismark raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/bismark/__init__.py", line 3, in <module>
+    from .bismark import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/bismark/bismark.py", line 12, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'hicexplorer' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module hicexplorer raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/hicexplorer/__init__.py", line 2, in <module>
+    from .hicexplorer import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/hicexplorer/hicexplorer.py", line 1, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'hicup' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module hicup raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/hicup/__init__.py", line 3, in <module>
+    from .hicup import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/hicup/hicup.py", line 11, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'salmon' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module salmon raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/salmon/__init__.py", line 3, in <module>
+    from .salmon import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/salmon/salmon.py", line 13, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'kallisto' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module kallisto raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/kallisto/__init__.py", line 3, in <module>
+    from .kallisto import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/kallisto/kallisto.py", line 12, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'slamdunk' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module slamdunk raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/slamdunk/__init__.py", line 3, in <module>
+    from .slamdunk import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/slamdunk/slamdunk.py", line 11, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'star' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module star raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/star/__init__.py", line 3, in <module>
+    from .star import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/star/star.py", line 13, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'hisat2' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module hisat2 raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/hisat2/__init__.py", line 3, in <module>
+    from .hisat2 import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/hisat2/hisat2.py", line 12, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'tophat' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module tophat raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/tophat/__init__.py", line 3, in <module>
+    from .tophat import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/tophat/tophat.py", line 13, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'bowtie2' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module bowtie2 raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/bowtie2/__init__.py", line 3, in <module>
+    from .bowtie2 import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/bowtie2/bowtie2.py", line 12, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'bowtie1' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module bowtie1 raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/bowtie1/__init__.py", line 3, in <module>
+    from .bowtie1 import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/bowtie1/bowtie1.py", line 12, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'leehom' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module leehom raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/leehom/__init__.py", line 3, in <module>
+    from .leehom import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/leehom/leehom.py", line 10, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'adapterRemoval' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module adapterRemoval raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/adapterRemoval/__init__.py", line 3, in <module>
+    from .adapterRemoval import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/adapterRemoval/adapterRemoval.py", line 11, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'cutadapt' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module cutadapt raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/cutadapt/__init__.py", line 3, in <module>
+    from .cutadapt import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/cutadapt/cutadapt.py", line 12, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'flexbar' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module flexbar raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/flexbar/__init__.py", line 3, in <module>
+    from .flexbar import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/flexbar/flexbar.py", line 12, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'trimmomatic' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module trimmomatic raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/trimmomatic/__init__.py", line 3, in <module>
+    from .trimmomatic import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/trimmomatic/trimmomatic.py", line 12, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'skewer' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module skewer raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/skewer/__init__.py", line 3, in <module>
+    from .skewer import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/skewer/skewer.py", line 12, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'sortmerna' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module sortmerna raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/sortmerna/__init__.py", line 2, in <module>
+    from .sortmerna import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/sortmerna/sortmerna.py", line 13, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'biobloomtools' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module biobloomtools raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/biobloomtools/__init__.py", line 3, in <module>
+    from .biobloomtools import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/biobloomtools/biobloomtools.py", line 11, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'fastq_screen' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module fastq_screen raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/fastq_screen/__init__.py", line 3, in <module>
+    from .fastq_screen import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/fastq_screen/fastq_screen.py", line 13, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'fastqc' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module fastqc raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/fastqc/__init__.py", line 3, in <module>
+    from .fastqc import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/fastqc/fastqc.py", line 24, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'clusterflow' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module clusterflow raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/clusterflow/__init__.py", line 3, in <module>
+    from .clusterflow import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/clusterflow/clusterflow.py", line 15, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'bcl2fastq' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module bcl2fastq raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/bcl2fastq/__init__.py", line 2, in <module>
+    from .bcl2fastq import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/bcl2fastq/bcl2fastq.py", line 1, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[ERROR  ]         multiqc : Oops! The 'interop' MultiQC module broke... 
+  Please copy the following traceback and report it at https://github.com/ewels/MultiQC/issues 
+  If possible, please include a log file that triggers the error - the last file found was:
+    None
+============================================================
+Module interop raised an exception: Traceback (most recent call last):
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/bin/multiqc", line 425, in multiqc
+    mod = config.avail_modules[this_module].load()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2450, in load
+    return self.resolve()
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/pkg_resources/__init__.py", line 2456, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/interop/__init__.py", line 2, in <module>
+    from .interop import MultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/interop/interop.py", line 1, in <module>
+    from multiqc.modules.base_module import BaseMultiqcModule
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/multiqc/modules/base_module.py", line 10, in <module>
+    import markdown
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/site-packages/markdown/__init__.py", line 40
+    from __future__ import annotations
+                                     ^
+SyntaxError: future feature annotations is not defined
+============================================================
+[WARNING]         multiqc : No analysis results found. Cleaning up..
+[INFO   ]         multiqc : MultiQC complete
+[Mon Oct  5 23:11:21 2026]
+Error in rule summaryReport:
+    jobid: 1
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/report_quality_control.html
+
+RuleException:
+CalledProcessError in line 49 of /work/hs325/bass25/rasflow/workflow/quality_control.rules:
+Command ' set -euo pipefail;  multiqc /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc --filename /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/report_quality_control.html ' returned non-zero exit status 1.
+  File "/work/hs325/bass25/rasflow/workflow/quality_control.rules", line 49, in __rule_summaryReport
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /work/hs325/bass25/rasflow/.snakemake/log/2026-10-05T153100.812994.snakemake.log

@@ -1,0 +1,300 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	27	alignment
+	1	end
+	27	featureCount
+	27	getReads
+	1	indexGenome
+	27	sortBAM
+	1	summaryReport
+	111
+
+[Mon Oct  5 23:12:10 2026]
+rule indexGenome:
+    input: /work/hs325/cvpan/asms/yu25/ncbi_dataset/data/GCF_053477285.1/GCF_053477285.1_ASM5347728v1_genomic.fna
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/indexes, /work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/splicesites.txt
+    jobid: 84
+
+mkdir /work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/indexes && hisat2-build -p 30 /work/hs325/cvpan/asms/yu25/ncbi_dataset/data/GCF_053477285.1/GCF_053477285.1_ASM5347728v1_genomic.fna /work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/indexes/index&& hisat2_extract_splice_sites.py /work/hs325/cvpan/asms/yu25/ncbi_dataset/data/GCF_053477285.1/GCF_053477285.1_ASM5347728v1_genomic.gtf > /work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/splicesites.txt
+Settings:
+  Output files: "/work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/indexes/index.*.ht2"
+  Line rate: 6 (line is 64 bytes)
+  Lines per side: 1 (side is 64 bytes)
+  Offset rate: 4 (one in 16)
+  FTable chars: 10
+  Strings: unpacked
+  Local offset rate: 3 (one in 8)
+  Local fTable chars: 6
+  Local sequence length: 57344
+  Local sequence overlap between two consecutive indexes: 1024
+  Endianness: little
+  Actual local endianness: little
+  Sanity checking: disabled
+  Assertions: disabled
+  Random seed: 0
+  Sizeofs: void*:8, int:4, long:8, size_t:8
+Input files DNA, FASTA:
+  /work/hs325/cvpan/asms/yu25/ncbi_dataset/data/GCF_053477285.1/GCF_053477285.1_ASM5347728v1_genomic.fna
+Reading reference sizes
+  Time reading reference sizes: 00:00:07
+Calculating joined length
+Writing header
+Reserving space for joined string
+Joining reference sequences
+  Time to join reference sequences: 00:00:03
+  Time to read SNPs and splice sites: 00:00:00
+Using parameters --bmax 99186157 --dcv 1024
+  Doing ahead-of-time memory usage test
+  Passed!  Constructing with these parameters: --bmax 99186157 --dcv 1024
+Constructing suffix-array element generator
+Building DifferenceCoverSample
+  Building sPrime
+  Building sPrimeOrder
+  V-Sorting samples
+  V-Sorting samples time: 00:00:06
+  Allocating rank array
+  Ranking v-sort output
+  Ranking v-sort output time: 00:00:03
+  Invoking Larsson-Sadakane on ranks
+  Invoking Larsson-Sadakane on ranks time: 00:00:05
+  Sanity-checking and returning
+Building samples
+Reserving space for 12 sample suffixes
+Generating random suffixes
+QSorting 12 sample offsets, eliminating duplicates
+QSorting sample offsets, eliminating duplicates time: 00:00:00
+Multikey QSorting 12 samples
+  (Using difference cover)
+  Multikey QSorting samples time: 00:00:00
+Calculating bucket sizes
+Splitting and merging
+  Splitting and merging time: 00:00:00
+Split 1, merged 6; iterating...
+Splitting and merging
+  Splitting and merging time: 00:00:00
+Avg bucket size: 6.61241e+07 (target: 99186156)
+Converting suffix-array elements to index image
+Allocating ftab, absorbFtab
+Entering GFM loop
+Getting block 1 of 8
+  Reserving size (99186157) for bucket 1
+Getting block 2 of 8
+  Reserving size (99186157) for bucket 2
+Getting block 3 of 8
+  Reserving size (99186157) for bucket 3
+  Calculating Z arrays for bucket 2
+Getting block 4 of 8
+  Reserving size (99186157) for bucket 4
+  Calculating Z arrays for bucket 1
+  Calculating Z arrays for bucket 3
+  Entering block accumulator loop for bucket 2:
+  Calculating Z arrays for bucket 4
+  Entering block accumulator loop for bucket 1:
+Getting block 5 of 8
+  Reserving size (99186157) for bucket 5
+  Entering block accumulator loop for bucket 4:
+  Entering block accumulator loop for bucket 3:
+Getting block 6 of 8
+  Calculating Z arrays for bucket 5
+  Reserving size (99186157) for bucket 6
+  Entering block accumulator loop for bucket 5:
+  Calculating Z arrays for bucket 6
+  Entering block accumulator loop for bucket 6:
+Getting block 7 of 8
+  Reserving size (99186157) for bucket 7
+  Calculating Z arrays for bucket 7
+  Entering block accumulator loop for bucket 7:
+Getting block 8 of 8
+  Reserving size (99186157) for bucket 8
+  Calculating Z arrays for bucket 8
+  Entering block accumulator loop for bucket 8:
+  bucket 8: 10%
+  bucket 1: 10%
+  bucket 2: 10%
+  bucket 3: 10%
+  bucket 7: 10%
+  bucket 4: 10%
+  bucket 5: 10%
+  bucket 6: 10%
+  bucket 8: 20%
+  bucket 1: 20%
+  bucket 8: 30%
+  bucket 2: 20%
+  bucket 3: 20%
+  bucket 1: 30%
+  bucket 7: 20%
+  bucket 4: 20%
+  bucket 5: 20%
+  bucket 6: 20%
+  bucket 8: 40%
+  bucket 1: 40%
+  bucket 2: 30%
+  bucket 3: 30%
+  bucket 7: 30%
+  bucket 8: 50%
+  bucket 4: 30%
+  bucket 1: 50%
+  bucket 5: 30%
+  bucket 6: 30%
+  bucket 2: 40%
+  bucket 8: 60%
+  bucket 3: 40%
+  bucket 1: 60%
+  bucket 7: 40%
+  bucket 4: 40%
+  bucket 5: 40%
+  bucket 8: 70%
+  bucket 1: 70%
+  bucket 2: 50%
+  bucket 3: 50%
+  bucket 6: 40%
+  bucket 7: 50%
+  bucket 8: 80%
+  bucket 1: 80%
+  bucket 4: 50%
+  bucket 5: 50%
+  bucket 2: 60%
+  bucket 8: 90%
+  bucket 3: 60%
+  bucket 1: 90%
+  bucket 7: 60%
+  bucket 6: 50%
+  bucket 8: 100%
+  Sorting block of length 1329032 for bucket 8
+  (Using difference cover)
+  bucket 1: 100%
+  Sorting block of length 62668638 for bucket 1
+  (Using difference cover)
+  bucket 4: 60%
+  bucket 5: 60%
+  bucket 2: 70%
+  bucket 3: 70%
+  Sorting block time: 00:00:01
+Returning block of 1329033 for bucket 8
+  bucket 7: 70%
+  bucket 6: 60%
+  bucket 3: 80%
+  bucket 2: 80%
+  bucket 4: 70%
+  bucket 5: 70%
+  bucket 3: 90%
+  bucket 7: 80%
+  bucket 2: 90%
+  bucket 6: 70%
+  bucket 4: 80%
+  bucket 3: 100%
+  Sorting block of length 71495101 for bucket 3
+  (Using difference cover)
+  bucket 5: 80%
+  bucket 7: 90%
+  bucket 2: 100%
+  Sorting block of length 60149113 for bucket 2
+  (Using difference cover)
+  bucket 4: 90%
+  bucket 5: 90%
+  bucket 6: 80%
+  bucket 7: 100%
+  Sorting block of length 98923174 for bucket 7
+  (Using difference cover)
+  bucket 4: 100%
+  Sorting block of length 42415530 for bucket 4
+  (Using difference cover)
+  bucket 5: 100%
+  Sorting block of length 96861073 for bucket 5
+  (Using difference cover)
+  bucket 6: 90%
+  bucket 6: 100%
+  Sorting block of length 95151168 for bucket 6
+  (Using difference cover)
+  Sorting block time: 00:00:28
+Returning block of 42415531 for bucket 4
+  Sorting block time: 00:00:35
+Returning block of 71495102 for bucket 3
+  Sorting block time: 00:00:40
+Returning block of 62668639 for bucket 1
+  Sorting block time: 00:00:39
+Returning block of 60149114 for bucket 2
+  Sorting block time: 00:00:57
+Returning block of 98923175 for bucket 7
+  Sorting block time: 00:00:57
+Returning block of 96861074 for bucket 5
+  Sorting block time: 00:00:56
+Returning block of 95151169 for bucket 6
+Exited GFM loop
+fchr[A]: 0
+fchr[C]: 172105369
+fchr[G]: 264503498
+fchr[T]: 356954283
+fchr[$]: 528992836
+Exiting GFM::buildToDisk()
+Returning from initFromVector
+Wrote 180527580 bytes to primary GFM file: /work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/indexes/index.1.ht2
+Wrote 132248216 bytes to secondary GFM file: /work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/indexes/index.2.ht2
+Re-opening _in1 and _in2 as input streams
+Returning from GFM constructor
+Returning from initFromVector
+Wrote 232150711 bytes to primary GFM file: /work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/indexes/index.5.ht2
+Wrote 134670196 bytes to secondary GFM file: /work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/indexes/index.6.ht2
+Re-opening _in5 and _in5 as input streams
+Returning from HierEbwt constructor
+Headers:
+    len: 528992836
+    gbwtLen: 528992837
+    nodes: 528992837
+    sz: 132248209
+    gbwtSz: 132248210
+    lineRate: 6
+    offRate: 4
+    offMask: 0xfffffff0
+    ftabChars: 10
+    eftabLen: 0
+    eftabSz: 0
+    ftabLen: 1048577
+    ftabSz: 4194308
+    offsLen: 33062053
+    offsSz: 132248212
+    lineSz: 64
+    sideSz: 64
+    sideGbwtSz: 48
+    sideGbwtLen: 192
+    numSides: 2755172
+    numLines: 2755172
+    gbwtTotLen: 176331008
+    gbwtTotSz: 176331008
+    reverse: 0
+    linearFM: Yes
+Total time for call to driver() for forward index: 00:03:06
+[Mon Oct  5 23:15:27 2026]
+Finished job 84.
+1 of 111 steps (0.90%) done
+
+[Mon Oct  5 23:15:27 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/reads/WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/reads/WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+    jobid: 87
+    wildcards: sample=WC_YEL2_23Jul25_Gill_S164_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/WC_YEL2_23Jul25_Gill_S164_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/reads/WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz[0m
+cp: cannot stat '/work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/WC_YEL2_23Jul25_Gill_S164_L007_*R1*.f*q.gz': No such file or directory
+[32m[Mon Oct  5 23:15:29 2026][0m
+[31mError in rule getReads:[0m
+[31m    jobid: 0[0m
+[31m    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/reads/WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/reads/WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz[0m
+[31m[0m
+[31mRuleException:
+CalledProcessError in line 29 of /work/hs325/bass25/rasflow/workflow/align_count_genome.rules:
+Command ' set -euo pipefail;  scp -i None /work/hs325/bass25/rasflow/results/Bass25RNAseq/trim/WC_YEL2_23Jul25_Gill_S164_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/genome/reads/WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz ' returned non-zero exit status 1.
+  File "/work/hs325/bass25/rasflow/workflow/align_count_genome.rules", line 29, in __rule_getReads
+  File "/hpc/group/schultzlab/hs325/miniconda3/envs/rasflow/lib/python3.6/concurrent/futures/thread.py", line 56, in run[0m
+[31mExiting because a job execution failed. Look above for error message[0m
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /work/hs325/bass25/rasflow/.snakemake/log/2026-10-05T231208.690684.snakemake.log

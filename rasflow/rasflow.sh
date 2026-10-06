@@ -25,8 +25,8 @@ run_stage() {
         2>&1 | tee "logs/${stage}-${SLURM_JOB_ID}.log"
 }
 
-run_stage quality_control
-run_stage trim
-run_stage align_count_genome
-run_stage dea_genome
-run_stage visualize
+run_stage quality_control    || exit "$?"
+run_stage trim               || exit "$?"
+run_stage align_count_genome  || exit "$?"
+run_stage dea_genome          || exit "$?"
+run_stage visualize          || exit "$?"
