@@ -1,0 +1,1571 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	end
+	27	getReads
+	27	qualityControl
+	1	summaryReport
+	56
+
+[Mon Oct  5 15:31:11 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+    jobid: 35
+    wildcards: sample=DAF_YEL1_27Jun25_Gill_S149_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL1_27Jun25_Gill_S149_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL1_27Jun25_Gill_S149_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz[0m
+[Mon Oct  5 15:31:29 2026]
+Finished job 35.
+1 of 56 steps (2%) done
+
+[Mon Oct  5 15:31:29 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL1_27Jun25_Gill_S149_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL1_27Jun25_Gill_S149_L007_reverse_fastqc.html
+    jobid: 8
+    wildcards: sample=DAF_YEL1_27Jun25_Gill_S149_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Started analysis of DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 5% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 10% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 15% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 20% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 25% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 30% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 35% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 40% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 45% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 50% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 55% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 60% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 65% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 70% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 75% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 80% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 85% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 90% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Approx 95% complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Analysis complete for DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz
+Started analysis of DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 5% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 10% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 15% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 20% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 25% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 30% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 35% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 40% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 45% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 50% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 55% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 60% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 65% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 70% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 75% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 80% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 85% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 90% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Approx 95% complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Analysis complete for DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_27Jun25_Gill_S149_L007_forward.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_27Jun25_Gill_S149_L007_reverse.fastq.gz.
+[Mon Oct  5 15:49:21 2026]
+Finished job 8.
+2 of 56 steps (4%) done
+
+[Mon Oct  5 15:49:21 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+    jobid: 39
+    wildcards: sample=CMT_YEL1_26Jun25_Gill_S165_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL1_26Jun25_Gill_S165_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL1_26Jun25_Gill_S165_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz[0m
+[Mon Oct  5 15:49:43 2026]
+Finished job 39.
+3 of 56 steps (5%) done
+
+[Mon Oct  5 15:49:43 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL1_26Jun25_Gill_S165_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL1_26Jun25_Gill_S165_L007_reverse_fastqc.html
+    jobid: 12
+    wildcards: sample=CMT_YEL1_26Jun25_Gill_S165_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Started analysis of CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 5% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 10% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 15% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 20% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 25% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 30% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 35% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 40% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 45% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 50% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 55% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 60% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 65% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 70% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 75% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 80% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 85% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 90% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Approx 95% complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Analysis complete for CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz
+Started analysis of CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 5% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 10% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 15% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 20% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 25% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 30% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 35% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 40% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 45% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 50% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 55% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 60% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 65% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 70% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 75% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 80% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 85% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 90% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Approx 95% complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Analysis complete for CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_26Jun25_Gill_S165_L007_reverse.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_26Jun25_Gill_S165_L007_forward.fastq.gz.
+[Mon Oct  5 16:06:43 2026]
+Finished job 12.
+4 of 56 steps (7%) done
+
+[Mon Oct  5 16:06:43 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+    jobid: 36
+    wildcards: sample=WC_YEL3_23Jul25_Gill_S146_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL3_23Jul25_Gill_S146_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL3_23Jul25_Gill_S146_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz[0m
+[Mon Oct  5 16:07:00 2026]
+Finished job 36.
+5 of 56 steps (9%) done
+
+[Mon Oct  5 16:07:00 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL3_23Jul25_Gill_S146_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL3_23Jul25_Gill_S146_L007_reverse_fastqc.html
+    jobid: 9
+    wildcards: sample=WC_YEL3_23Jul25_Gill_S146_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Started analysis of WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 5% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 10% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 15% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 20% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 25% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 30% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 35% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 40% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 45% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 50% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 55% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 60% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 65% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 70% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 75% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 80% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 85% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 90% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Approx 95% complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Analysis complete for WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz
+Started analysis of WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 5% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 10% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 15% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 20% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 25% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 30% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 35% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 40% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 45% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 50% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 55% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 60% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 65% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 70% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 75% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 80% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 85% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 90% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Approx 95% complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Analysis complete for WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_23Jul25_Gill_S146_L007_reverse.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_23Jul25_Gill_S146_L007_forward.fastq.gz.
+[Mon Oct  5 16:24:05 2026]
+Finished job 9.
+6 of 56 steps (11%) done
+
+[Mon Oct  5 16:24:05 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+    jobid: 52
+    wildcards: sample=DAF_YEL1_11Jul25_Gill_S157_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL1_11Jul25_Gill_S157_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL1_11Jul25_Gill_S157_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz[0m
+[Mon Oct  5 16:24:21 2026]
+Finished job 52.
+7 of 56 steps (12%) done
+
+[Mon Oct  5 16:24:21 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL1_11Jul25_Gill_S157_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL1_11Jul25_Gill_S157_L007_reverse_fastqc.html
+    jobid: 25
+    wildcards: sample=DAF_YEL1_11Jul25_Gill_S157_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Started analysis of DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 5% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 10% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 15% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 20% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 25% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 30% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 35% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 40% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 45% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 50% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 55% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 60% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 65% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 70% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 75% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 80% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 85% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 90% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Approx 95% complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Analysis complete for DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz
+Started analysis of DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 5% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 10% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 15% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 20% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 25% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 30% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 35% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 40% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 45% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 50% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 55% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 60% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 65% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 70% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 75% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 80% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 85% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 90% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Approx 95% complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Analysis complete for DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_11Jul25_Gill_S157_L007_forward.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL1_11Jul25_Gill_S157_L007_reverse.fastq.gz.
+[Mon Oct  5 16:39:51 2026]
+Finished job 25.
+8 of 56 steps (14%) done
+
+[Mon Oct  5 16:39:51 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+    jobid: 30
+    wildcards: sample=WC_YEL3_25Jun25_Gill_S154_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL3_25Jun25_Gill_S154_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL3_25Jun25_Gill_S154_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz[0m
+[Mon Oct  5 16:40:16 2026]
+Finished job 30.
+9 of 56 steps (16%) done
+
+[Mon Oct  5 16:40:16 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL3_25Jun25_Gill_S154_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL3_25Jun25_Gill_S154_L007_reverse_fastqc.html
+    jobid: 3
+    wildcards: sample=WC_YEL3_25Jun25_Gill_S154_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Started analysis of WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 5% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 10% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 15% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 20% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 25% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 30% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 35% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 40% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 45% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 50% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 55% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 60% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 65% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 70% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 75% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 80% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 85% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 90% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Approx 95% complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Analysis complete for WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz
+Started analysis of WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 5% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 10% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 15% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 20% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 25% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 30% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 35% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 40% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 45% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 50% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 55% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 60% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 65% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 70% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 75% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 80% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 85% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 90% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Approx 95% complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Analysis complete for WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_25Jun25_Gill_S154_L007_reverse.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_25Jun25_Gill_S154_L007_forward.fastq.gz.
+[Mon Oct  5 16:57:19 2026]
+Finished job 3.
+10 of 56 steps (18%) done
+
+[Mon Oct  5 16:57:19 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+    jobid: 32
+    wildcards: sample=DAF_YEL2_11Jul25_Gill_S147_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL2_11Jul25_Gill_S147_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL2_11Jul25_Gill_S147_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz[0m
+[Mon Oct  5 16:57:35 2026]
+Finished job 32.
+11 of 56 steps (20%) done
+
+[Mon Oct  5 16:57:35 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL2_11Jul25_Gill_S147_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL2_11Jul25_Gill_S147_L007_reverse_fastqc.html
+    jobid: 5
+    wildcards: sample=DAF_YEL2_11Jul25_Gill_S147_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Started analysis of DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 5% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 10% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 15% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 20% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 25% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 30% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 35% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 40% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 45% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 50% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 55% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 60% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 65% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 70% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 75% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 80% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 85% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 90% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Approx 95% complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Analysis complete for DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz
+Started analysis of DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 5% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 10% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 15% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 20% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 25% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 30% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 35% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 40% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 45% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 50% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 55% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 60% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 65% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 70% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 75% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 80% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 85% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 90% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Approx 95% complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Analysis complete for DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_11Jul25_Gill_S147_L007_forward.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_11Jul25_Gill_S147_L007_reverse.fastq.gz.
+[Mon Oct  5 17:13:44 2026]
+Finished job 5.
+12 of 56 steps (21%) done
+
+[Mon Oct  5 17:13:44 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+    jobid: 44
+    wildcards: sample=CMT_YEL2_26Jun25_Gill_S155_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL2_26Jun25_Gill_S155_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL2_26Jun25_Gill_S155_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz[0m
+[Mon Oct  5 17:13:58 2026]
+Finished job 44.
+13 of 56 steps (23%) done
+
+[Mon Oct  5 17:13:58 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL2_26Jun25_Gill_S155_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL2_26Jun25_Gill_S155_L007_reverse_fastqc.html
+    jobid: 17
+    wildcards: sample=CMT_YEL2_26Jun25_Gill_S155_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Started analysis of CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 5% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 10% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 15% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 20% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 25% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 30% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 35% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 40% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 45% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 50% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 55% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 60% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 65% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 70% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 75% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 80% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 85% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 90% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Approx 95% complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Analysis complete for CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz
+Started analysis of CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 5% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 10% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 15% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 20% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 25% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 30% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 35% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 40% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 45% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 50% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 55% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 60% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 65% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 70% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 75% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 80% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 85% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 90% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Approx 95% complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Analysis complete for CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_26Jun25_Gill_S155_L007_reverse.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_26Jun25_Gill_S155_L007_forward.fastq.gz.
+[Mon Oct  5 17:27:15 2026]
+Finished job 17.
+14 of 56 steps (25%) done
+
+[Mon Oct  5 17:27:15 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+    jobid: 48
+    wildcards: sample=CMT_YEL3_26Jun25_Gill_S148_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL3_26Jun25_Gill_S148_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL3_26Jun25_Gill_S148_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz[0m
+[Mon Oct  5 17:27:32 2026]
+Finished job 48.
+15 of 56 steps (27%) done
+
+[Mon Oct  5 17:27:32 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL3_26Jun25_Gill_S148_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL3_26Jun25_Gill_S148_L007_reverse_fastqc.html
+    jobid: 21
+    wildcards: sample=CMT_YEL3_26Jun25_Gill_S148_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Started analysis of CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 5% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 10% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 15% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 20% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 25% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 30% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 35% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 40% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 45% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 50% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 55% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 60% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 65% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 70% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 75% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 80% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 85% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 90% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Approx 95% complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Analysis complete for CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz
+Started analysis of CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 5% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 10% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 15% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 20% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 25% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 30% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 35% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 40% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 45% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 50% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 55% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 60% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 65% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 70% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 75% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 80% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 85% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 90% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Approx 95% complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Analysis complete for CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_26Jun25_Gill_S148_L007_reverse.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_26Jun25_Gill_S148_L007_forward.fastq.gz.
+[Mon Oct  5 17:43:52 2026]
+Finished job 21.
+16 of 56 steps (29%) done
+
+[Mon Oct  5 17:43:52 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+    jobid: 34
+    wildcards: sample=DAF_YEL3_25Jul25_Gill_S162_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL3_25Jul25_Gill_S162_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL3_25Jul25_Gill_S162_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz[0m
+[Mon Oct  5 17:44:08 2026]
+Finished job 34.
+17 of 56 steps (30%) done
+
+[Mon Oct  5 17:44:08 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL3_25Jul25_Gill_S162_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL3_25Jul25_Gill_S162_L007_reverse_fastqc.html
+    jobid: 7
+    wildcards: sample=DAF_YEL3_25Jul25_Gill_S162_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Started analysis of DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 5% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 10% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 15% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 20% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 25% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 30% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 35% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 40% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 45% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 50% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 55% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 60% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 65% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 70% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 75% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 80% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 85% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 90% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Approx 95% complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Analysis complete for DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz
+Started analysis of DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 5% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 10% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 15% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 20% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 25% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 30% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 35% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 40% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 45% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 50% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 55% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 60% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 65% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 70% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 75% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 80% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 85% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 90% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Approx 95% complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Analysis complete for DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_25Jul25_Gill_S162_L007_forward.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_25Jul25_Gill_S162_L007_reverse.fastq.gz.
+[Mon Oct  5 17:58:54 2026]
+Finished job 7.
+18 of 56 steps (32%) done
+
+[Mon Oct  5 17:58:54 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+    jobid: 38
+    wildcards: sample=WC_YEL1_23Jul25_Gill_S158_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL1_23Jul25_Gill_S158_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL1_23Jul25_Gill_S158_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz[0m
+[Mon Oct  5 17:59:11 2026]
+Finished job 38.
+19 of 56 steps (34%) done
+
+[Mon Oct  5 17:59:11 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL1_23Jul25_Gill_S158_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL1_23Jul25_Gill_S158_L007_reverse_fastqc.html
+    jobid: 11
+    wildcards: sample=WC_YEL1_23Jul25_Gill_S158_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Started analysis of WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 5% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 10% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 15% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 20% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 25% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 30% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 35% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 40% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 45% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 50% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 55% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 60% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 65% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 70% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 75% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 80% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 85% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 90% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Approx 95% complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Analysis complete for WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz
+Started analysis of WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 5% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 10% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 15% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 20% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 25% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 30% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 35% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 40% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 45% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 50% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 55% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 60% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 65% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 70% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 75% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 80% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 85% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 90% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Approx 95% complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Analysis complete for WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_23Jul25_Gill_S158_L007_reverse.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_23Jul25_Gill_S158_L007_forward.fastq.gz.
+[Mon Oct  5 18:15:03 2026]
+Finished job 11.
+20 of 56 steps (36%) done
+
+[Mon Oct  5 18:15:03 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+    jobid: 43
+    wildcards: sample=DAF_YEL2_25Jul25_Gill_S153_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL2_25Jul25_Gill_S153_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL2_25Jul25_Gill_S153_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz[0m
+[Mon Oct  5 18:15:22 2026]
+Finished job 43.
+21 of 56 steps (38%) done
+
+[Mon Oct  5 18:15:22 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL2_25Jul25_Gill_S153_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL2_25Jul25_Gill_S153_L007_reverse_fastqc.html
+    jobid: 16
+    wildcards: sample=DAF_YEL2_25Jul25_Gill_S153_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Started analysis of DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 5% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 10% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 15% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 20% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 25% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 30% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 35% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 40% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 45% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 50% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 55% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 60% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 65% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 70% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 75% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 80% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 85% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 90% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Approx 95% complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Analysis complete for DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz
+Started analysis of DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 5% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 10% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 15% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 20% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 25% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 30% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 35% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 40% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 45% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 50% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 55% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 60% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 65% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 70% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 75% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 80% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 85% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 90% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Approx 95% complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Analysis complete for DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_25Jul25_Gill_S153_L007_reverse.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_25Jul25_Gill_S153_L007_forward.fastq.gz.
+[Mon Oct  5 18:30:46 2026]
+Finished job 16.
+22 of 56 steps (39%) done
+
+[Mon Oct  5 18:30:46 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+    jobid: 50
+    wildcards: sample=DAF_YEL3_27Jun25_Gill_S161_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL3_27Jun25_Gill_S161_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL3_27Jun25_Gill_S161_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz[0m
+[Mon Oct  5 18:31:05 2026]
+Finished job 50.
+23 of 56 steps (41%) done
+
+[Mon Oct  5 18:31:05 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL3_27Jun25_Gill_S161_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL3_27Jun25_Gill_S161_L007_reverse_fastqc.html
+    jobid: 23
+    wildcards: sample=DAF_YEL3_27Jun25_Gill_S161_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Started analysis of DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 5% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 10% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 15% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 20% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 25% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 30% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 35% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 40% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 45% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 50% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 55% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 60% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 65% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 70% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 75% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 80% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 85% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 90% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Approx 95% complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Analysis complete for DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz
+Started analysis of DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 5% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 10% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 15% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 20% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 25% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 30% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 35% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 40% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 45% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 50% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 55% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 60% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 65% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 70% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 75% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 80% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 85% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 90% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Approx 95% complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Analysis complete for DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_27Jun25_Gill_S161_L007_forward.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL3_27Jun25_Gill_S161_L007_reverse.fastq.gz.
+[Mon Oct  5 18:47:30 2026]
+Finished job 23.
+24 of 56 steps (43%) done
+
+[Mon Oct  5 18:47:30 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+    jobid: 46
+    wildcards: sample=CMT_YEL1_24Jul25_Gill_S151_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL1_24Jul25_Gill_S151_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL1_24Jul25_Gill_S151_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz[0m
+[Mon Oct  5 18:47:48 2026]
+Finished job 46.
+25 of 56 steps (45%) done
+
+[Mon Oct  5 18:47:48 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL1_24Jul25_Gill_S151_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL1_24Jul25_Gill_S151_L007_reverse_fastqc.html
+    jobid: 19
+    wildcards: sample=CMT_YEL1_24Jul25_Gill_S151_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Started analysis of CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 5% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 10% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 15% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 20% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 25% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 30% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 35% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 40% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 45% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 50% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 55% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 60% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 65% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 70% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 75% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 80% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 85% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 90% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Approx 95% complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Analysis complete for CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz
+Started analysis of CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 5% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 10% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 15% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 20% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 25% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 30% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 35% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 40% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 45% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 50% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 55% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 60% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 65% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 70% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 75% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 80% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 85% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 90% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Approx 95% complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Analysis complete for CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_24Jul25_Gill_S151_L007_reverse.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL1_24Jul25_Gill_S151_L007_forward.fastq.gz.
+[Mon Oct  5 19:04:55 2026]
+Finished job 19.
+26 of 56 steps (46%) done
+
+[Mon Oct  5 19:04:55 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+    jobid: 49
+    wildcards: sample=WC_YEL2_25Jun25_Gill_S163_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL2_25Jun25_Gill_S163_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL2_25Jun25_Gill_S163_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz[0m
+[Mon Oct  5 19:05:13 2026]
+Finished job 49.
+27 of 56 steps (48%) done
+
+[Mon Oct  5 19:05:13 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL2_25Jun25_Gill_S163_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL2_25Jun25_Gill_S163_L007_reverse_fastqc.html
+    jobid: 22
+    wildcards: sample=WC_YEL2_25Jun25_Gill_S163_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Started analysis of WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 5% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 10% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 15% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 20% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 25% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 30% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 35% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 40% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 45% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 50% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 55% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 60% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 65% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 70% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 75% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 80% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 85% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 90% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Approx 95% complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Analysis complete for WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz
+Started analysis of WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 5% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 10% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 15% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 20% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 25% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 30% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 35% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 40% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 45% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 50% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 55% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 60% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 65% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 70% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 75% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 80% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 85% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 90% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Approx 95% complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Analysis complete for WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_25Jun25_Gill_S163_L007_forward.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_25Jun25_Gill_S163_L007_reverse.fastq.gz.
+[Mon Oct  5 19:22:26 2026]
+Finished job 22.
+28 of 56 steps (50%) done
+
+[Mon Oct  5 19:22:26 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+    jobid: 47
+    wildcards: sample=CMT_YEL2_24Jul25_Gill_S145_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL2_24Jul25_Gill_S145_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL2_24Jul25_Gill_S145_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz[0m
+[Mon Oct  5 19:22:40 2026]
+Finished job 47.
+29 of 56 steps (52%) done
+
+[Mon Oct  5 19:22:40 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL2_24Jul25_Gill_S145_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL2_24Jul25_Gill_S145_L007_reverse_fastqc.html
+    jobid: 20
+    wildcards: sample=CMT_YEL2_24Jul25_Gill_S145_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Started analysis of CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 5% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 10% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 15% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 20% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 25% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 30% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 35% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 40% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 45% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 50% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 55% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 60% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 65% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 70% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 75% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 80% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 85% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 90% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Approx 95% complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Analysis complete for CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz
+Started analysis of CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 5% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 10% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 15% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 20% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 25% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 30% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 35% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 40% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 45% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 50% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 55% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 60% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 65% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 70% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 75% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 80% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 85% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 90% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Approx 95% complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Analysis complete for CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_24Jul25_Gill_S145_L007_reverse.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL2_24Jul25_Gill_S145_L007_forward.fastq.gz.
+[Mon Oct  5 19:36:46 2026]
+Finished job 20.
+30 of 56 steps (54%) done
+
+[Mon Oct  5 19:36:46 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+    jobid: 41
+    wildcards: sample=CMT_YEL3_9Jul25_Gill_S168_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL3_9Jul25_Gill_S168_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL3_9Jul25_Gill_S168_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz[0m
+[Mon Oct  5 19:37:07 2026]
+Finished job 41.
+31 of 56 steps (55%) done
+
+[Mon Oct  5 19:37:07 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL3_9Jul25_Gill_S168_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL3_9Jul25_Gill_S168_L007_reverse_fastqc.html
+    jobid: 14
+    wildcards: sample=CMT_YEL3_9Jul25_Gill_S168_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Started analysis of CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 5% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 10% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 15% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 20% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 25% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 30% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 35% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 40% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 45% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 50% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 55% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 60% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 65% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 70% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 75% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 80% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 85% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 90% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Approx 95% complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Analysis complete for CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz
+Started analysis of CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 5% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 10% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 15% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 20% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 25% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 30% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 35% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 40% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 45% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 50% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 55% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 60% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 65% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 70% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 75% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 80% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 85% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 90% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Approx 95% complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Analysis complete for CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_9Jul25_Gill_S168_L007_reverse.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_9Jul25_Gill_S168_L007_forward.fastq.gz.
+[Mon Oct  5 19:54:12 2026]
+Finished job 14.
+32 of 56 steps (57%) done
+
+[Mon Oct  5 19:54:12 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+    jobid: 31
+    wildcards: sample=DAF_YEL2_27Jun25_Gill_S143_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL2_27Jun25_Gill_S143_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/DAF_YEL2_27Jun25_Gill_S143_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz[0m
+[Mon Oct  5 19:54:32 2026]
+Finished job 31.
+33 of 56 steps (59%) done
+
+[Mon Oct  5 19:54:32 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL2_27Jun25_Gill_S143_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/DAF_YEL2_27Jun25_Gill_S143_L007_reverse_fastqc.html
+    jobid: 4
+    wildcards: sample=DAF_YEL2_27Jun25_Gill_S143_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Started analysis of DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 5% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 10% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 15% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 20% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 25% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 30% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 35% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 40% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 45% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 50% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 55% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 60% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 65% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 70% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 75% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 80% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 85% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 90% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Approx 95% complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Analysis complete for DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz
+Started analysis of DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 5% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 10% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 15% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 20% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 25% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 30% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 35% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 40% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 45% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 50% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 55% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 60% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 65% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 70% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 75% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 80% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 85% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 90% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Approx 95% complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Analysis complete for DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_27Jun25_Gill_S143_L007_forward.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/DAF_YEL2_27Jun25_Gill_S143_L007_reverse.fastq.gz.
+[Mon Oct  5 20:13:17 2026]
+Finished job 4.
+34 of 56 steps (61%) done
+
+[Mon Oct  5 20:13:17 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+    jobid: 42
+    wildcards: sample=WC_YEL1_25Jun25_Gill_S160_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL1_25Jun25_Gill_S160_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL1_25Jun25_Gill_S160_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz[0m
+[Mon Oct  5 20:13:36 2026]
+Finished job 42.
+35 of 56 steps (62%) done
+
+[Mon Oct  5 20:13:36 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL1_25Jun25_Gill_S160_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL1_25Jun25_Gill_S160_L007_reverse_fastqc.html
+    jobid: 15
+    wildcards: sample=WC_YEL1_25Jun25_Gill_S160_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Started analysis of WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 5% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 10% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 15% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 20% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 25% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 30% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 35% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 40% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 45% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 50% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 55% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 60% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 65% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 70% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 75% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 80% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 85% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 90% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Approx 95% complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Analysis complete for WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz
+Started analysis of WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 5% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 10% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 15% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 20% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 25% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 30% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 35% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 40% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 45% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 50% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 55% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 60% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 65% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 70% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 75% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 80% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 85% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 90% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Approx 95% complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Analysis complete for WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_25Jun25_Gill_S160_L007_forward.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_25Jun25_Gill_S160_L007_reverse.fastq.gz.
+[Mon Oct  5 20:30:56 2026]
+Finished job 15.
+36 of 56 steps (64%) done
+
+[Mon Oct  5 20:30:56 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+    jobid: 51
+    wildcards: sample=WC_YEL1_9Jul25_Gill_S156_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL1_9Jul25_Gill_S156_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL1_9Jul25_Gill_S156_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz[0m
+[Mon Oct  5 20:31:15 2026]
+Finished job 51.
+37 of 56 steps (66%) done
+
+[Mon Oct  5 20:31:15 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL1_9Jul25_Gill_S156_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL1_9Jul25_Gill_S156_L007_reverse_fastqc.html
+    jobid: 24
+    wildcards: sample=WC_YEL1_9Jul25_Gill_S156_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Started analysis of WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 5% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 10% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 15% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 20% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 25% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 30% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 35% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 40% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 45% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 50% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 55% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 60% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 65% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 70% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 75% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 80% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 85% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 90% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Approx 95% complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Analysis complete for WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz
+Started analysis of WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 5% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 10% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 15% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 20% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 25% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 30% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 35% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 40% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 45% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 50% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 55% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 60% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 65% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 70% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 75% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 80% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 85% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 90% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Approx 95% complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Analysis complete for WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_9Jul25_Gill_S156_L007_forward.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL1_9Jul25_Gill_S156_L007_reverse.fastq.gz.
+[Mon Oct  5 20:50:44 2026]
+Finished job 24.
+38 of 56 steps (68%) done
+
+[Mon Oct  5 20:50:44 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+    jobid: 29
+    wildcards: sample=CMT_YEL3_24Jul25_Gill_S159_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL3_24Jul25_Gill_S159_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/CMT_YEL3_24Jul25_Gill_S159_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz[0m
+[Mon Oct  5 20:51:00 2026]
+Finished job 29.
+39 of 56 steps (70%) done
+
+[Mon Oct  5 20:51:00 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL3_24Jul25_Gill_S159_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/CMT_YEL3_24Jul25_Gill_S159_L007_reverse_fastqc.html
+    jobid: 2
+    wildcards: sample=CMT_YEL3_24Jul25_Gill_S159_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Started analysis of CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 5% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 10% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 15% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 20% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 25% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 30% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 35% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 40% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 45% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 50% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 55% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 60% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 65% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 70% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 75% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 80% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 85% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 90% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Approx 95% complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Analysis complete for CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz
+Started analysis of CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 5% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 10% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 15% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 20% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 25% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 30% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 35% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 40% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 45% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 50% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 55% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 60% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 65% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 70% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 75% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 80% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 85% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 90% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Approx 95% complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Analysis complete for CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_24Jul25_Gill_S159_L007_reverse.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/CMT_YEL3_24Jul25_Gill_S159_L007_forward.fastq.gz.
+[Mon Oct  5 21:08:49 2026]
+Finished job 2.
+40 of 56 steps (71%) done
+
+[Mon Oct  5 21:08:49 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+    jobid: 53
+    wildcards: sample=WC_YEL2_23Jul25_Gill_S164_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL2_23Jul25_Gill_S164_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL2_23Jul25_Gill_S164_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz[0m
+[Mon Oct  5 21:09:10 2026]
+Finished job 53.
+41 of 56 steps (73%) done
+
+[Mon Oct  5 21:09:10 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL2_23Jul25_Gill_S164_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL2_23Jul25_Gill_S164_L007_reverse_fastqc.html
+    jobid: 26
+    wildcards: sample=WC_YEL2_23Jul25_Gill_S164_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Started analysis of WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 5% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 10% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 15% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 20% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 25% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 30% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 35% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 40% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 45% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 50% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 55% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 60% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 65% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 70% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 75% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 80% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 85% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 90% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Approx 95% complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Analysis complete for WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz
+Started analysis of WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 5% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 10% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 15% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 20% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 25% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 30% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 35% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 40% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 45% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 50% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 55% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 60% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 65% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 70% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 75% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 80% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 85% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 90% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Approx 95% complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Analysis complete for WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_23Jul25_Gill_S164_L007_reverse.fastq.gz.
+Removing temporary output file /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL2_23Jul25_Gill_S164_L007_forward.fastq.gz.
+[Mon Oct  5 21:27:06 2026]
+Finished job 26.
+42 of 56 steps (75%) done
+
+[Mon Oct  5 21:27:06 2026]
+rule getReads:
+    output: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+    jobid: 33
+    wildcards: sample=WC_YEL3_9Jul25_Gill_S150_L007
+
+[33mJob counts:
+	count	jobs
+	1	getReads
+	1[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL3_9Jul25_Gill_S150_L007_*R1*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz[0m
+[33mscp -i None /work/hs325/bass25/raw/WC_YEL3_9Jul25_Gill_S150_L007_*R2*.f*q.gz /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz[0m
+[Mon Oct  5 21:27:24 2026]
+Finished job 33.
+43 of 56 steps (77%) done
+
+[Mon Oct  5 21:27:24 2026]
+rule qualityControl:
+    input: /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz, /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+    output: /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL3_9Jul25_Gill_S150_L007_forward_fastqc.html, /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc/WC_YEL3_9Jul25_Gill_S150_L007_reverse_fastqc.html
+    jobid: 6
+    wildcards: sample=WC_YEL3_9Jul25_Gill_S150_L007
+
+fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz && fastqc -t $((30+0)) -o /work/hs325/bass25/rasflow/results/final/Bass25RNAseq/fastqc /work/hs325/bass25/rasflow/results/Bass25RNAseq/reads/WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Started analysis of WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 5% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 10% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 15% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 20% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 25% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 30% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 35% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 40% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 45% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 50% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 55% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 60% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 65% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 70% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 75% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 80% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 85% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 90% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Approx 95% complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Analysis complete for WC_YEL3_9Jul25_Gill_S150_L007_forward.fastq.gz
+Started analysis of WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz
+Approx 5% complete for WC_YEL3_9Jul25_Gill_S150_L007_reverse.fastq.gz

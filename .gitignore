@@ -1,0 +1,15 @@
+/clean/
+/raw/
+/misc/
+/rasflow/.snakemake/
+/rasflow/results/
+/rasflow/workflow/
+/logs/
+*.jar
+*.gz
+*.tsv
+*.csv
+*.out
+*.err
+*.fa
+*.fai
