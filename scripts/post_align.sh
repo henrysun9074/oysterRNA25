@@ -1,57 +1,74 @@
-#!/bin/bash -e
+#!/bin/bash
 #SBATCH --job-name=postalign
 #SBATCH --time=7-00:00:00
-#SBATCH --output=/work/hs325/bass25/misc/postalign.out
-#SBATCH --error=/work/hs325/bass25/misc/postalign.err
+#SBATCH --output=/work/hs325/bass25/misc/postalign_%a.out
+#SBATCH --error=/work/hs325/bass25/misc/postalign_%a.err
 #SBATCH --partition=scavenger
 #SBATCH --nodes=1
+#SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=hs325@duke.edu
 
-######## sam to bam ##########
+set -eo pipefail
+
+ALIGNED_DIR="/work/hs325/bass25/align"
+BAM_DIR="$ALIGNED_DIR/bam"
+LOG_DIR="/work/hs325/bass25/misc"
+SORT_MEMORY_PER_THREAD="2G"
+
+if [[ -z "${SLURM_ARRAY_TASK_ID:-}" ]]; then
+    shopt -s nullglob
+    sam_files=("$ALIGNED_DIR"/*.sam)
+    n_samples="${#sam_files[@]}"
+    if (( n_samples == 0 )); then
+        echo "No SAM files found in $ALIGNED_DIR" >&2
+        exit 1
+    fi
+
+    mkdir -p "$BAM_DIR" "$LOG_DIR"
+    manifest="$(mktemp "$LOG_DIR/postalign_samples.XXXXXX")"
+    printf '%s\n' "${sam_files[@]}" > "$manifest"
+    script_path="$(readlink -f "${BASH_SOURCE[0]}")"
+
+    submission="$(sbatch --parsable \
+        --array="1-${n_samples}" \
+        --export="ALL,POSTALIGN_MANIFEST=$manifest" \
+        "$script_path")"
+    echo "Submitted postalign array ${submission%%;*} with $n_samples samples"
+    echo "SAM-file list: $manifest"
+    exit 0
+fi
+
+manifest="${POSTALIGN_MANIFEST:?Run this workflow with bash postalign_array.sh}"
+task_id="${SLURM_ARRAY_TASK_ID:?This script requires a SLURM array}"
+threads="${SLURM_CPUS_PER_TASK:-8}"
+
+mapfile -t sam_files < "$manifest"
+if (( task_id < 1 || task_id > ${#sam_files[@]} )); then
+    echo "Invalid array index: $task_id" >&2
+    exit 1
+fi
+sam="${sam_files[$((task_id - 1))]}"
+SAMPLE="$(basename "$sam" .sam)"
+if [[ ! -s "$sam" ]]; then
+    echo "Missing or empty SAM: $sam" >&2
+    exit 1
+fi
+
 module load samtools
-echo samtools
+mkdir -p "$BAM_DIR"
+unsorted_bam="$BAM_DIR/${SAMPLE}.bam"
+sorted_bam="$BAM_DIR/${SAMPLE}_sorted.bam"
 
-## Set Paths ##
-ALIGNED_DIR=/work/hs325/bass25/align
-mkdir -p ${ALIGNED_DIR} 
-SAM_DIR=${ALIGNED_DIR}
-BAM_DIR=${SAM_DIR}/bam/
-mkdir -p ${BAM_DIR}
+echo "[$SAMPLE] Converting SAM to BAM"
+samtools view -b "$sam" -o "$unsorted_bam"
 
-## Set up direction/path to each sample ##
-# Make list of trimmed sample names (without _R1/_R2 suffix)
-SAMPLES=($(ls ${SAM_DIR}/*.sam | sed 's/.sam//' | xargs -n 1 basename))
+echo "[$SAMPLE] Sorting BAM"
+samtools sort -@ "$threads" -m "$SORT_MEMORY_PER_THREAD" \
+    "$unsorted_bam" -o "$sorted_bam"
 
-# Index an individual sample from the list for this array task
-SAMPLE=${SAMPLES[$SLURM_ARRAY_TASK_ID-1]}
-
-## Convert from SAM to BAM file format ##
-echo "Converting sample " ${SAMPLE} " from SAM to BAM..."
-
-# First convert SAM --> BAM
-samtools view -b ${SAM_DIR}/${SAMPLE}.sam -o ${BAM_DIR}/${SAMPLE}.bam
-# Next sort the alignment (BAM) file
-samtools sort -@ ${SLURM_CPUS_PER_TASK} ${BAM_DIR}/${SAMPLE}.bam -o ${BAM_DIR}/${SAMPLE}_sorted.bam
-# Finally index on the sorted aligment file 
-samtools index ${BAM_DIR}/${SAMPLE}_sorted.bam
-
-echo "BAM done"
-
-######## lastly, we end with multiqc
-conda activate RNA-seq
-
-## Set paths ##
-HISAT2_SUMMARY=${SAM_DIR}
-MULTIQC_OUT=${SAM_DIR}/multiqc
-mkdir -p ${SAM_DIR}
-
-## Run MultiQC ##
-echo "Running MultiQC on alignment summary files"
-
-multiqc ${HISAT2_SUMMARY}/*_hisat2_summary.txt -o ${MULTIQC_OUT}
-
-echo "MultiQC complete!"
-conda deactivate
+samtools quickcheck -v "$sorted_bam"
+samtools index "$sorted_bam"
+echo "[$SAMPLE] Finished BAM conversion, sorting and indexing"

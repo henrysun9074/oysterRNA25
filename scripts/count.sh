@@ -1,8 +1,8 @@
 #!/bin/bash -e
 #SBATCH --job-name=featureCounts
 #SBATCH --time=7-00:00:00
-#SBATCH --output=/work/hs325/bass25/misc/featureCounts_gtf.out
-#SBATCH --error=/work/clh162/bass25/misc/featureCounts_gtf.err
+#SBATCH --output=/work/hs325/bass25/misc/featureCounts.out
+#SBATCH --error=/work/clh162/bass25/misc/featureCounts.err
 #SBATCH --partition=scavenger
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=12
