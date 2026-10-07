@@ -2,7 +2,7 @@
 #SBATCH --job-name=featureCounts
 #SBATCH --time=7-00:00:00
 #SBATCH --output=/work/hs325/bass25/misc/featureCounts.out
-#SBATCH --error=/work/clh162/bass25/misc/featureCounts.err
+#SBATCH --error=/work/hs325/bass25/misc/featureCounts.err
 #SBATCH --partition=scavenger
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=12
@@ -14,7 +14,7 @@
 module load Subread
 
 ## Set paths ## 
-GENOME=/work/hs325/cvpan/asms/yu25/ncbi_dataset/data
+GENOME=/work/hs325/cvpan/asms/yu25/ncbi_dataset/data/GCF_053477285.1
 BAM_DIR="/work/hs325/bass25/align/bam"
 COUNT_DIR="/work/hs325/bass25/align/counts"
 mkdir -p ${COUNT_DIR}
