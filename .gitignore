@@ -7,7 +7,9 @@
 /rasflow/workflow/
 /logs/
 *.jar
-*,rds
+*.png
+*.pdf
+*.rds
 *.gz
 *.tsv
 *.csv
