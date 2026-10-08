@@ -174,15 +174,13 @@ vst_mat <- assay(vst)
 vst_cor <- cor(vst_mat)  
 head(vst_cor)  
 
-## TODO: modify this plot to remove sample names but add in labels for location/date
-## Add in legend and save
+# preliminary visualization
 heat.colors <- colorRampPalette(rev(brewer.pal(9, "Blues")))(255)
 hcplot <- pheatmap(vst_cor,
    color = heat.colors,
    fontsize_col = 8,
    fontsize_row = 8) 
 hcplot
-# ggsave(file.path(figs_dir,"clustering_raw.png"), plot = hcplot, width = 7, height = 7, dpi = 300)
 
 
 ################################################################################
@@ -242,17 +240,57 @@ results_df <- as.data.frame(results) %>%
   )
 
 ### Volcano plot
-ggplot(results_df, aes(x = log2FoldChange, y = -log10(padj), color = significance)) +
+volc <- ggplot(results_df, aes(x = log2FoldChange, y = -log10(padj), color = significance)) +
   geom_point(alpha = 0.6, size = 1.5) +
   geom_vline(xintercept = c(-1, 1),
              linetype = "dashed") +
   geom_hline(yintercept = 0.5,
              linetype = "dashed") +
-  scale_color_manual(values = c("red", "blue")) + 
+  scale_color_brewer(palette = "Set2") +
   theme_pubr() +
   labs(
     x = "log2 fold change",
     y = "-log10 adjusted p-value") +
   theme(legend.position = "none")
+volc
 
+###########################################
 
+# heatmap of top genes
+sample_order <- order(colData(vst)$location,
+                      colData(vst)$time)
+
+# create heatmap annotation
+top_genes <- rownames(results0.05)[1:50] 
+
+mat <- assay(vst)[top_genes, ] # get expression values
+mat <- t(scale(t(mat))) # scale each gene
+
+brewer.pal(n =3 , "Accent")
+brewer.pal(n =3 , "Set1")
+
+heatmap_annotation_month <- HeatmapAnnotation(Location = colData(vst)$location[sample_order],
+                                              Month = colData(vst)$time[sample_order],
+                                              # set the colors for both annotation groups 
+                                              col = list(
+                                                Location = c(
+                                                  "CMT" = "#7FC97F",
+                                                  "DAF" = "#BEAED4",
+                                                  "WC" = "#FDC086"
+                                                ),
+                                                Month = c(
+                                                  "Jun" = "lightgoldenrod", 
+                                                  "Jul1" = "darkgoldenrod1",
+                                                  "Jul2" = "darkgoldenrod"
+                                                )
+                                              )
+)
+
+heatmapDESeqresults <- Heatmap(mat[, sample_order],
+                               name = "Expression",
+                               top_annotation = heatmap_annotation_month,
+                               show_row_names = FALSE, 
+                               show_column_names = FALSE,
+                               cluster_rows = TRUE,
+                               cluster_columns = FALSE)
+heatmapDESeqresults
