@@ -402,3 +402,7 @@ top_gene_table <- top_genes %>%
     max_abs_LFC, min_pvalue, min_padj
   )
 print(top_gene_table, n = Inf, width = Inf)
+
+
+############################ run GO enrichment 
+### GO terms in file /work/hs325/bass25/deseq2/go/GCF_053477285.1-RS_2025_12_gene_ontology.gaf
