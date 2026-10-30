@@ -4,7 +4,7 @@
 #SBATCH --array=1-27
 #SBATCH --output=/work/hs325/bass25/misc/Yale25_trimmomatic_hisat2_alignment_%a.out
 #SBATCH --error=/work/hs325/bass25/misc/Yale25_trimmomatic_hisat2_alignment_%a.err
-#SBATCH --partition=scavenger
+#SBATCH --partition=schultzlab
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G

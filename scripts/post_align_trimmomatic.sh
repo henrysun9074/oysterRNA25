@@ -3,7 +3,7 @@
 #SBATCH --time=7-00:00:00
 #SBATCH --output=/work/hs325/bass25/misc/postalign_trimmomatic_%a.out
 #SBATCH --error=/work/hs325/bass25/misc/postalign_trimmomatic_%a.err
-#SBATCH --partition=scavenger
+#SBATCH --partition=schultzlab
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8

@@ -23,7 +23,7 @@ dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 dir.create(figs_dir, recursive = TRUE, showWarnings = FALSE)
 
 # read count data
-counts_data <- read.table("align/counts/counts_matrix.txt", header = TRUE, sep = "\t", skip = 1, stringsAsFactors = FALSE)
+counts_data <- read.table("align/trimmomatic/counts/counts_matrix.txt", header = TRUE, sep = "\t", skip = 1, stringsAsFactors = FALSE)
 rownames(counts_data) <- counts_data$Geneid
 head(counts_data)
 
@@ -256,6 +256,8 @@ for (comparison in names(contrast_list)) {
       "Downregulated" = "cyan3",
       "Insignificant" = "grey75",
       "Upregulated" = "deeppink4"
+      # "Downregulated" = "darkgreen",
+      # "Upregulated" = "coral4"
     ), drop = FALSE) +
     theme_pubr(base_size = 12) +
     labs(
@@ -406,3 +408,8 @@ print(top_gene_table, n = Inf, width = Inf)
 
 ############################ run GO enrichment 
 ### GO terms in file /work/hs325/bass25/deseq2/go/GCF_053477285.1-RS_2025_12_gene_ontology.gaf
+
+## run for comparisons with most DEGs
+# DAF jun vs CMT jul2
+# DAF jun vs WC jul2
+# CMT vs WC

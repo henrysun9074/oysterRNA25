@@ -3,7 +3,7 @@
 #SBATCH --time=7-00:00:00
 #SBATCH --output=/work/hs325/bass25/misc/featureCounts_trimmomatic.out
 #SBATCH --error=/work/hs325/bass25/misc/featureCounts_trimmomatic.err
-#SBATCH --partition=scavenger
+#SBATCH --partition=common
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=12
 #SBATCH --mem=64G
