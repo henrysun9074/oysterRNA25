@@ -10,6 +10,10 @@ library(pheatmap)
 library(ComplexHeatmap)
 library(EnhancedVolcano)
 library(RColorBrewer)
+library(clusterProfiler)
+library(ashr)
+library(vsn)
+library(GO.db)
 library(ggplot2)
 
 setwd("/work/hs325/bass25")
@@ -72,7 +76,7 @@ sample_table <- sample_table %>%
       levels = unlist(lapply(location_levels, function(x) paste(x, time_levels, sep = "_")))
     )
   ) %>%
-  select(-date_string) %>%
+  dplyr::select(-date_string) %>%
   column_to_rownames("sample")
 stopifnot(identical(rownames(sample_table), colnames(count_matrix))) ## check these match
 
@@ -101,7 +105,7 @@ write.csv(sample_table, file.path(out_dir, "sample_metadata.csv"), row.names = T
 #   colData = sample_table,
 #   design = ~ group
 # )
-# dds_filtered <- DESeq(dds, betaPrior = FALSE)
+# dds_filtered <- DESeq(dds_filtered, betaPrior = FALSE)
 # saveRDS(dds_filtered, file.path(out_dir, "dds_filtered.rds"))
 
 ##################### choose here which dds for downstream  ####################
@@ -110,10 +114,11 @@ write.csv(sample_table, file.path(out_dir, "sample_metadata.csv"), row.names = T
 ######## try again
 
 ###### UNFILTERED
-dds_filtered <- readRDS(file.path(out_dir,"dds.rds"))
-                      
+# dds_filtered <- readRDS(file.path(out_dir,"dds.rds"))
+
 ###### FILTERED
-# dds_filtered <- readRDS(file.path(out_dir,"dds_filtered.rds"))
+dds_filtered <- readRDS(file.path(out_dir,"dds_filtered.rds"))
+stopifnot(identical(design(dds_filtered), ~group)) # make sure this is the filtered ~group fit
 
 ################################################################################
 
@@ -121,11 +126,11 @@ dds_filtered <- readRDS(file.path(out_dir,"dds.rds"))
 loc_colors <- brewer.pal(n =3, name = "Accent")
 time_shapes <- c(8,17,16)
 padj.cutoff <- 0.05
-lfc.cutoff <- 2
+lfc.cutoff <- 1 # tested in results() via lfcThreshold, i.e. H0: |LFC| <= lfc.cutoff
 top_n <- 100L
 gc()
 
-# now do vst for pca plot or load in unfiltered
+# now do vst for pca plot only
 vst_filtered <- varianceStabilizingTransformation(dds_filtered, blind = FALSE)
 vst_filtered_matrix <- assay(vst_filtered)
 meta <- as.data.frame(colData(dds_filtered))
@@ -138,7 +143,7 @@ pca_data <- plotPCA(
 percent_var <- round(100 * attr(pca_data, "percentVar"), 2)
 
 pca_plot <- ggplot(pca_data, aes(PC1, PC2, color = location, shape = time)) +
-  geom_point(size = 4, alpha = 0.8) +
+  geom_point(size = 4, alpha = 1) +
   scale_color_brewer(palette = "Accent") +
   scale_shape_manual(values = time_shapes) +
   labs(
@@ -207,6 +212,7 @@ plot_titles <- c(
 )
 
 res_list <- list()
+res_shrunk_list <- list()
 result_tables <- list()
 deg_tables <- list()
 volcano_plots <- list()
@@ -215,16 +221,24 @@ summary_rows <- list()
 
 ############## for each comp - volcano plot, heatmap, DEG list saved
 for (comparison in names(contrast_list)) {
+  # padj now tests |LFC| > lfc.cutoff, so no post hoc LFC filter is needed
   res <- DESeq2::results(
-    dds_filtered, contrast = contrast_list[[comparison]], alpha = padj.cutoff
+    dds_filtered, contrast = contrast_list[[comparison]],
+    lfcThreshold = lfc.cutoff, altHypothesis = "greaterAbs", alpha = padj.cutoff
   )
   res_list[[comparison]] <- res
+  # shrink LFCs so low-count genes don't produce huge, unreliable fold changes;
+  # using ashr for shrinkage for combinatorial comparison
+  res <- lfcShrink(
+    dds_filtered, contrast = contrast_list[[comparison]], res = res, type = "ashr"
+  )
+  res_shrunk_list[[comparison]] <- res
   tbl <- as.data.frame(res) %>%
     rownames_to_column("gene_id") %>%
     mutate(
       significance = case_when(
-        !is.na(padj) & padj < padj.cutoff & log2FoldChange >= lfc.cutoff ~ "Upregulated",
-        !is.na(padj) & padj < padj.cutoff & log2FoldChange <= -lfc.cutoff ~ "Downregulated",
+        !is.na(padj) & padj < padj.cutoff & log2FoldChange > 0 ~ "Upregulated",
+        !is.na(padj) & padj < padj.cutoff & log2FoldChange < 0 ~ "Downregulated",
         TRUE ~ "Insignificant"
       ),
       significance = factor(significance, levels = c(
@@ -262,7 +276,7 @@ for (comparison in names(contrast_list)) {
     theme_pubr(base_size = 12) +
     labs(
       title = unname(plot_titles[comparison]),
-      x = "log2FC",
+      x = "shrunken log2FC",
       y = "-log10-adjusted p-value", color = NULL
     ) +
     theme(legend.position = "bottom", plot.title = element_text(size = 14, face = "plain"),
@@ -275,7 +289,7 @@ for (comparison in names(contrast_list)) {
   ggsave(file.path(figs_dir, paste0(comparison, "_volcano.pdf")), volc,
          width = 8, height = 6)
   
-  # MA plots highlight FDR < 0.05; volcanoes and heatmaps also require |LFC| >= 1
+  # MA plots highlight padj < 0.05 from the |LFC| > lfc.cutoff test (shrunken LFCs shown)
   pdf(file.path(figs_dir, paste0(comparison, "_MA.pdf")), width = 7, height = 6)
   DESeq2::plotMA(res, alpha = padj.cutoff, main = unname(plot_titles[comparison]))
   dev.off()
@@ -322,16 +336,43 @@ for (comparison in names(contrast_list)) {
 deg_summary <- bind_rows(summary_rows)
 print(deg_summary)
 write_csv(deg_summary, file.path(out_dir, "DEG_summary.csv"))
-saveRDS(res_list, file.path(out_dir, "DEG_contrast_results.rds"))
+
+# shrunk results are used downstream 
+saveRDS(res_shrunk_list, file.path(out_dir, "DEG_contrast_results.rds"))
+saveRDS(res_list, file.path(out_dir, "DEG_contrast_results_unshrunk.rds"))
 
 combined_volcano <- ggarrange(
   plotlist = volcano_plots, ncol = 3, nrow = 3,
   common.legend = TRUE, legend = "bottom"
 )
+
 print(combined_volcano)
+
 ggsave(file.path(figs_dir, "combined_volcano.pdf"), combined_volcano,
        width = 9, height = 10)
+ggsave(file.path(figs_dir, "combined_volcano.png"), combined_volcano,
+       width = 9, height = 10)
 gc()
+
+# plots for basic QC DESeq object
+
+# run this to get pre shrinkage
+# res <- DESeq2::results(
+#   dds_filtered, contrast = contrast_list[[comparison]],
+#   lfcThreshold = lfc.cutoff, altHypothesis = "greaterAbs", alpha = padj.cutoff
+# )
+
+# vsd plot
+ntd <- normTransform(dds_filtered)
+meanSdPlot(assay(ntd))
+
+# MA plot
+plotMA(res, ylim=c(-2,2))
+
+# dispersion plot
+plotDispEsts(dds_filtered)
+
+# 
 
 ##########################################################
 
@@ -346,10 +387,8 @@ all_results <- bind_rows(lapply(names(deg_results), function(comp) {
     mutate(comparison = comp)
 })) %>%
   mutate(
-    significant = !is.na(padj) &
-      padj < 0.05 &
-      !is.na(log2FoldChange) &
-      abs(log2FoldChange) >= 2
+    # padj already tests |LFC| > lfc.cutoff
+    significant = !is.na(padj) & padj < padj.cutoff
   )
 
 # count how many comparisons each gene is significant in
@@ -365,7 +404,7 @@ shared_genes <- all_results %>%
 # show these genes' results in every comparison
 shared_gene_results <- all_results %>%
   inner_join(shared_genes, by = "gene_id") %>%
-  select(
+  dplyr::select(
     gene_id, n_significant, comparison,
     log2FoldChange, pvalue, padj, significant
   ) %>%
@@ -399,17 +438,168 @@ cat(top_genes$gene_id, sep = "\n")
 
 # Table of significant comparisons and strongest results
 top_gene_table <- top_genes %>%
-  select(
+  dplyr::select(
     gene_id, n_significant, significant_comparisons,
     max_abs_LFC, min_pvalue, min_padj
   )
 print(top_gene_table, n = Inf, width = Inf)
 
 
-############################ run GO enrichment 
+############################ run GO enrichment ##################################
+
 ### GO terms in file /work/hs325/bass25/deseq2/go/GCF_053477285.1-RS_2025_12_gene_ontology.gaf
 
-## run for comparisons with most DEGs
-# DAF jun vs CMT jul2
-# DAF jun vs WC jul2
-# CMT vs WC
+go_dir <- file.path(out_dir, "go")
+gaf_file <- file.path(go_dir, "GCF_053477285.1-RS_2025_12_gene_ontology.gaf")
+location_comparisons <- c("DAF_vs_WC", "CMT_vs_WC", "DAF_vs_CMT")
+go_comparisons <- unique(c("DAF_Jun_vs_CMT_Jul2", "DAF_Jun_vs_WC_Jul2", location_comparisons))
+
+# parse gaf file
+gaf <- read_tsv(gaf_file, comment = "!", col_names = FALSE, col_types = cols(.default = "c"),
+                quote = "")
+gene2go <- gaf %>%
+  transmute(gene_id = X3, qualifier = X4, go_id = X5, ontology = X9) %>%
+  filter(!str_detect(qualifier, "^NOT")) %>%
+  mutate(ontology = recode(ontology, P = "BP", F = "MF", C = "CC")) %>%
+  distinct(gene_id, go_id, ontology)
+
+# GAF only holds the most specific terms, so propagate each annotation to all ancestor terms
+ancestor_maps <- list(BP = as.list(GOBPANCESTOR), MF = as.list(GOMFANCESTOR), CC = as.list(GOCCANCESTOR))
+gene2go_prop <- bind_rows(lapply(names(ancestor_maps), function(ont) {
+  direct <- gene2go %>% filter(ontology == ont)
+  anc <- ancestor_maps[[ont]][direct$go_id]
+  tibble(
+    gene_id = rep(direct$gene_id, lengths(anc) + 1L),
+    go_id = unlist(Map(c, direct$go_id, anc), use.names = FALSE),
+    ontology = ont
+  )
+})) %>%
+  filter(go_id != "all") %>%
+  distinct()
+
+# get GO term names
+term_names <- AnnotationDbi::select(GO.db, keys = unique(gene2go_prop$go_id),
+                                    columns = "TERM", keytype = "GOID") %>%
+  dplyr::rename(go_id = GOID, term = TERM)
+
+# check that the GAF symbols match the count-matrix gene IDs, this should be >0
+cat("Genes in dds with >=1 GO term:",
+    sum(rownames(dds_filtered) %in% gene2go$gene_id), "of", nrow(dds_filtered), "\n")
+
+go_results <- list()
+go_plots <- list()
+for (comparison in go_comparisons) {
+  res_tbl <- as.data.frame(deg_results[[comparison]]) %>%
+    rownames_to_column("gene_id")
+  # background = genes actually tested (independent filtering leaves padj = NA)
+  universe <- res_tbl %>% filter(!is.na(padj)) %>% pull(gene_id)
+  deg_sig <- res_tbl %>%
+    filter(!is.na(padj), padj < padj.cutoff) # padj already tests |LFC| > lfc.cutoff
+  gene_sets <- list(
+    all = deg_sig$gene_id,
+    up = deg_sig$gene_id[deg_sig$log2FoldChange > 0],
+    down = deg_sig$gene_id[deg_sig$log2FoldChange < 0]
+  )
+
+  for (direction in names(gene_sets)) {
+    for (ont in c("BP", "MF", "CC")) {
+      t2g <- gene2go_prop %>% filter(ontology == ont) %>% dplyr::select(go_id, gene_id)
+      ego <- enricher(
+        gene = gene_sets[[direction]], universe = universe,
+        TERM2GENE = t2g, TERM2NAME = term_names,
+        pvalueCutoff = 1, qvalueCutoff = 1, pAdjustMethod = "BH",
+        minGSSize = 5, maxGSSize = 500
+      )
+      if (is.null(ego) || nrow(as.data.frame(ego)) == 0) next
+      key <- paste(comparison, direction, ont, sep = "_")
+      go_results[[key]] <- as.data.frame(ego) %>%
+        mutate(comparison = comparison, direction = direction, ontology = ont, .before = 1)
+
+      # lollipop of top 15 terms by nominal p (few DEGs rarely survive FDR)
+      if (direction == "all") {
+        lolli_tbl <- go_results[[key]] %>%
+          slice_min(pvalue, n = 15, with_ties = FALSE) %>%
+          mutate(
+            neg_log10_p = -log10(pvalue),
+            Description = str_trunc(Description, 60),
+            Description = fct_reorder(Description, neg_log10_p)
+          )
+        go_plots[[key]] <- ggplot(lolli_tbl, aes(neg_log10_p, Description)) +
+          geom_segment(aes(x = 0, xend = neg_log10_p, yend = Description), color = "grey60") +
+          geom_point(aes(size = Count, color = p.adjust)) +
+          geom_vline(xintercept = -log10(0.05), linetype = "dashed") +
+          scale_color_viridis_c(direction = -1, name = "FDR") +
+          scale_x_continuous(expand = expansion(mult = c(0, 0.05))) +
+          theme_pubr(base_size = 12) +
+          labs(
+            title = paste0(plot_titles[comparison], " - GO ", ont),
+            x = "-log10(p-value)", y = NULL, size = "DEGs in term"
+          ) +
+          theme(plot.title = element_text(size = 12, face = "plain"),
+                text = element_text(face = "bold", family = "sans"),
+                legend.text = element_text(face = "plain"),
+                legend.position = "right")
+        print(go_plots[[key]])
+        ggsave(file.path(figs_dir, paste0(key, "_GO_lollipop.pdf")), go_plots[[key]],
+               width = 8, height = 6)
+      }
+    }
+  }
+}
+
+go_table <- bind_rows(go_results) %>% arrange(comparison, direction, ontology, pvalue)
+write_csv(go_table, file.path(go_dir, "GO_enrichment_results.csv"))
+
+# quick summary: terms at p < 0.05 and FDR < 0.05 per comparison/direction/ontology
+go_table %>%
+  group_by(comparison, direction, ontology) %>%
+  summarise(n_p05 = sum(pvalue < 0.05), n_fdr05 = sum(p.adjust < 0.05), .groups = "drop") %>%
+  print(n = Inf)
+
+############## combined GO lollipop for location-only comparisons
+top_terms_per_comp <- 10
+loc_go <- go_table %>%
+  filter(comparison %in% location_comparisons, direction == "all")
+loc_top_ids <- loc_go %>%
+  group_by(comparison, ontology) %>%
+  slice_min(pvalue, n = top_terms_per_comp, with_ties = FALSE) %>%
+  ungroup() %>%
+  distinct(ontology, ID)
+
+combined_go_tbl <- loc_go %>%
+  semi_join(loc_top_ids, by = c("ontology", "ID")) %>%
+  mutate(
+    neg_log10_p = -log10(pvalue),
+    comparison = factor(comparison, levels = location_comparisons,
+                        labels = unname(plot_titles[location_comparisons])),
+    ontology = factor(ontology, levels = c("BP", "MF", "CC")),
+    Description = str_trunc(Description, 60)
+  ) %>%
+  group_by(ontology, Description) %>%
+  mutate(best_p = max(neg_log10_p)) %>%
+  ungroup() %>%
+  mutate(Description = fct_reorder(Description, best_p))
+
+combined_go_plot <- ggplot(combined_go_tbl, aes(neg_log10_p, Description)) +
+  geom_segment(aes(x = 0, xend = neg_log10_p, yend = Description), color = "grey60") +
+  geom_point(aes(size = Count, color = p.adjust)) +
+  geom_vline(xintercept = -log10(0.05), linetype = "dashed") +
+  facet_grid(ontology ~ comparison, scales = "free_y", space = "free_y") +
+  scale_color_viridis_c(direction = -1, name = "FDR") +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme_pubr(base_size = 11) +
+  labs(
+    x = "-log10(p-value)", y = NULL, size = "DEGs in term"
+  ) +
+  theme(plot.title = element_text(size = 12, face = "plain"),
+        text = element_text(face = "bold", family = "sans"),
+        legend.text = element_text(face = "plain"),
+        legend.position = "right",
+        strip.background = element_rect(fill = "grey90", color = NA),
+        panel.border = element_rect(fill = NA, color = "grey70"))
+print(combined_go_plot)
+
+ggsave(file.path(figs_dir, "location_comparisons_GO_lollipop.pdf"), combined_go_plot,
+       width = 13, height = 9)
+ggsave(file.path(figs_dir, "location_comparisons_GO_lollipop.png"), combined_go_plot,
+       width = 13, height = 9, dpi = 300)

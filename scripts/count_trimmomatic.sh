@@ -40,8 +40,8 @@ echo "Running featureCounts on all samples simultaneously..."
 featureCounts \
     -T ${SLURM_CPUS_PER_TASK} \
     -p --countReadPairs -B \
-    -t gene \
+    -t exon \
     -g gene_id \
     -a ${GENOME}/fixed_ncbi_annotation_yale25.gtf \
-    -o ${COUNT_DIR}/counts_matrix.txt \
+    -o ${COUNT_DIR}/counts_matrix_exon_2Nov26.txt \
     ${BAM_DIR}/*_sorted.bam 
