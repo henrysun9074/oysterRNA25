@@ -1,10 +1,8 @@
+library(cowplot)
 library(tidyverse)
 library(ggpubr)
 library(readxl)
-library(cowplot)
 
-### read in data
-setwd('/work/hs325/bass25')
 growth <- read.csv("raw/env_bio/growth2025.csv")
 growth <- growth %>%
   mutate(Site = case_when(
@@ -23,19 +21,19 @@ cmt_mort <- read_excel("/work/hs325/bass25/raw/env_bio/mortality2025.xlsx", shee
 cmt_mort$location <- "CMT"
 mort <- rbind(duml_mort, wc_mort, cmt_mort)
 
+## use these colors from the previous plots for consistency
+loc_colors <- c("CMT" = "#7FC97F", "DAF" = "#BEAED4", "WC" = "#FDC086")
+
 ## date windows: growth was sampled through August, mortality through October 1
-start_date      <- as.Date("2025-05-20")
-growth_end_date <- as.Date("2025-10-01")
+start_date      <- as.Date("2025-05-01")
+growth_end_date <- as.Date("2025-08-31")
 mort_end_date   <- as.Date("2025-10-01")
 
-# only plot triploids as only triploids were used for RNAseq
+# plot only 3n
 growth <- growth %>% filter(Strain == "Triploid")
 mort <- mort %>%
   mutate(Date = as.Date(Date)) %>%
   filter(Strain == "Triploid", Date >= start_date, Date <= mort_end_date)
-## use these colors from the previous plots for consistency
-loc_colors <- c("CMT" = "#7FC97F", "DAF" = "#BEAED4", "WC" = "#FDC086")
-
 
 growth <- growth %>%
   mutate(Date = as.Date(Date, format = "%m/%d/%y")) %>%
@@ -53,9 +51,19 @@ bold_theme <- theme(
   plot.margin  = margin(t = 10, r = 10, b = 5, l = 5)
 )
 
+# month ticks
 month_scale <- scale_x_date(date_labels = "%b", date_breaks = "1 month")
 
-## growth: mean +/- SE of shell length, width, depth per site and sampling date
+## shaded date windows for RNA sampling
+shade_windows <- data.frame(
+  xmin = as.Date(c("2025-06-25", "2025-07-09", "2025-07-23")),
+  xmax = as.Date(c("2025-06-27", "2025-07-11", "2025-07-25"))
+)
+shade_layer <- geom_rect(data = shade_windows,
+                         aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf),
+                         inherit.aes = FALSE, fill = "gray50", alpha = 0.4)
+
+## growth
 growth_long <- growth %>%
   pivot_longer(c(L_mm, W_mm, D_mm), names_to = "Dimension", values_to = "mm") %>%
   mutate(Dimension = factor(Dimension, levels = c("L_mm", "W_mm", "D_mm"),
@@ -68,6 +76,7 @@ growth_sum <- growth_long %>%
             .groups = "drop")
 
 p_growth <- ggplot(growth_sum, aes(Date, mean, color = Site, group = Site)) +
+  shade_layer + 
   geom_jitter(data = growth_long, aes(Date, mm, color = Site), inherit.aes = FALSE,
               width = 2, height = 0, alpha = 0.5, size = 1) +
   geom_line(linewidth = 0.8) +
@@ -82,7 +91,7 @@ p_growth <- ggplot(growth_sum, aes(Date, mean, color = Site, group = Site)) +
   theme(strip.background = element_blank()) +
   bold_theme
 
-## mortality: mean +/- SE survivorship across replicate bags
+## mortality
 mort_sum <- mort %>%
   group_by(location, Date) %>%
   summarise(mean = mean(Survivorship, na.rm = TRUE),
@@ -90,6 +99,7 @@ mort_sum <- mort %>%
             .groups = "drop")
 
 p_mort <- ggplot(mort_sum, aes(Date, mean, color = location, group = location)) +
+  shade_layer + 
   geom_jitter(data = mort, aes(Date, Survivorship, color = location), inherit.aes = FALSE,
               width = 2, height = 0, alpha = 0.5, size = 1.5) +
   geom_line(linewidth = 0.8) +
@@ -102,10 +112,9 @@ p_mort <- ggplot(mort_sum, aes(Date, mean, color = location, group = location)) 
   theme_pubr() +
   bold_theme
 
-## combine with cowplot
+## COMBINE
 shared_legend <- get_legend(p_mort + theme(legend.position = "right",
                                            legend.box.margin = margin(0, 20, 0, 10)))
-
 panels <- plot_grid(
   p_growth + theme(legend.position = "none"),
   p_mort   + theme(legend.position = "none"),
@@ -115,3 +124,7 @@ panels <- plot_grid(
 
 p_both <- plot_grid(panels, shared_legend, nrow = 1, rel_widths = c(1, 0.15))
 p_both
+
+## save
+dir.create("raw/env_bio/plots", showWarnings = FALSE)
+ggsave("raw/env_bio/plots/growth_mortality_triploid.png", p_both, width = 12, height = 8)
