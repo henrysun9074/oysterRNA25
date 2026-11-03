@@ -27,7 +27,7 @@ dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 dir.create(figs_dir, recursive = TRUE, showWarnings = FALSE)
 
 # read count data
-counts_data <- read.table("align/trimmomatic/counts/counts_matrix.txt", header = TRUE, sep = "\t", skip = 1, stringsAsFactors = FALSE)
+counts_data <- read.table("align/trimmomatic/counts/counts_matrix_exon_2Nov26.txt", header = TRUE, sep = "\t", skip = 1, stringsAsFactors = FALSE)
 rownames(counts_data) <- counts_data$Geneid
 head(counts_data)
 
@@ -172,9 +172,12 @@ hcplot
 
 ################ load in model matrix and comparisons to run
 model_matrix <- model.matrix(design(dds_filtered), data = meta)
-location_mean <- function(loc) {
-  colMeans(unique(model_matrix[meta$location == loc, , drop = FALSE]))
+# design is ~group, so main effects are built as the equally weighted mean of group coefficients
+factor_mean <- function(var, level) {
+  colMeans(unique(model_matrix[meta[[var]] == level, , drop = FALSE]))
 }
+location_mean <- function(loc) factor_mean("location", loc)
+time_mean <- function(tp) factor_mean("time", tp)
 
 contrast_list <- list(
   DAF_vs_CMT = location_mean("DAF") - location_mean("CMT"),
@@ -185,7 +188,10 @@ contrast_list <- list(
   CMT_Jun_vs_CMT_Jul2 = c("group", "CMT_Jun", "CMT_Jul2"),
   DAF_Jun_vs_WC_Jul2 = c("group", "DAF_Jun", "WC_Jul2"),
   CMT_Jun_vs_WC_Jul2 = c("group", "CMT_Jun", "WC_Jul2"),
-  WC_Jun_vs_WC_Jul2 = c("group", "WC_Jun", "WC_Jul2")
+  WC_Jun_vs_WC_Jul2 = c("group", "WC_Jun", "WC_Jul2"),
+  Jun_vs_Jul1 = time_mean("Jun") - time_mean("Jul1"),
+  Jun_vs_Jul2 = time_mean("Jun") - time_mean("Jul2"),
+  Jul1_vs_Jul2 = time_mean("Jul1") - time_mean("Jul2")
 )
 
 heatmap_samples <- list(
@@ -197,8 +203,12 @@ heatmap_samples <- list(
   CMT_Jun_vs_CMT_Jul2 = meta$group %in% c("CMT_Jun", "CMT_Jul2"),
   DAF_Jun_vs_WC_Jul2 = meta$group %in% c("DAF_Jun", "WC_Jul2"),
   CMT_Jun_vs_WC_Jul2 = meta$group %in% c("CMT_Jun", "WC_Jul2"),
-  WC_Jun_vs_WC_Jul2 = meta$group %in% c("WC_Jun", "WC_Jul2")
+  WC_Jun_vs_WC_Jul2 = meta$group %in% c("WC_Jun", "WC_Jul2"),
+  Jun_vs_Jul1 = meta$time %in% c("Jun", "Jul1"),
+  Jun_vs_Jul2 = meta$time %in% c("Jun", "Jul2"),
+  Jul1_vs_Jul2 = meta$time %in% c("Jul1", "Jul2")
 )
+
 plot_titles <- c(
   DAF_vs_CMT = "DAF vs CMT",
   DAF_vs_WC = "DAF vs WC",
@@ -208,7 +218,10 @@ plot_titles <- c(
   CMT_Jun_vs_CMT_Jul2 = "CMT Jun vs CMT Jul2",
   DAF_Jun_vs_WC_Jul2 = "DAF Jun vs WC Jul2",
   CMT_Jun_vs_WC_Jul2 = "CMT Jun vs WC Jul2",
-  WC_Jun_vs_WC_Jul2 = "WC Jun vs WC Jul2"
+  WC_Jun_vs_WC_Jul2 = "WC Jun vs WC Jul2",
+  Jun_vs_Jul1 = "Jun vs Jul1",
+  Jun_vs_Jul2 = "Jun vs Jul2",
+  Jul1_vs_Jul2 = "Jul1 vs Jul2"
 )
 
 res_list <- list()
@@ -276,7 +289,7 @@ for (comparison in names(contrast_list)) {
     theme_pubr(base_size = 12) +
     labs(
       title = unname(plot_titles[comparison]),
-      x = "shrunken log2FC",
+      x = "log2FC",
       y = "-log10-adjusted p-value", color = NULL
     ) +
     theme(legend.position = "bottom", plot.title = element_text(size = 14, face = "plain"),
@@ -289,11 +302,11 @@ for (comparison in names(contrast_list)) {
   ggsave(file.path(figs_dir, paste0(comparison, "_volcano.pdf")), volc,
          width = 8, height = 6)
   
-  # MA plots highlight padj < 0.05 from the |LFC| > lfc.cutoff test (shrunken LFCs shown)
-  pdf(file.path(figs_dir, paste0(comparison, "_MA.pdf")), width = 7, height = 6)
-  DESeq2::plotMA(res, alpha = padj.cutoff, main = unname(plot_titles[comparison]))
-  dev.off()
-  
+  # MA plots 
+  # pdf(file.path(figs_dir, paste0(comparison, "_MA.pdf")), width = 7, height = 6)
+  # DESeq2::plotMA(res, alpha = padj.cutoff, main = unname(plot_titles[comparison]))
+  # dev.off()
+  # 
   # heatmap: top significant genes ranked by adjusted p-value
   genes <- head(deg_tbl$gene_id, top_n)
   selected <- which(heatmap_samples[[comparison]])
@@ -342,20 +355,19 @@ saveRDS(res_shrunk_list, file.path(out_dir, "DEG_contrast_results.rds"))
 saveRDS(res_list, file.path(out_dir, "DEG_contrast_results_unshrunk.rds"))
 
 combined_volcano <- ggarrange(
-  plotlist = volcano_plots, ncol = 3, nrow = 3,
+  plotlist = volcano_plots, ncol = 4, nrow = 3,
   common.legend = TRUE, legend = "bottom"
 )
-
 print(combined_volcano)
 
 ggsave(file.path(figs_dir, "combined_volcano.pdf"), combined_volcano,
-       width = 9, height = 10)
+       width = 12, height = 9)
 ggsave(file.path(figs_dir, "combined_volcano.png"), combined_volcano,
-       width = 9, height = 10)
+       width = 12, height = 9)
 gc()
 
-# plots for basic QC DESeq object
 
+# plots for basic QC DESeq object
 # run this to get pre shrinkage
 # res <- DESeq2::results(
 #   dds_filtered, contrast = contrast_list[[comparison]],
@@ -372,7 +384,6 @@ plotMA(res, ylim=c(-2,2))
 # dispersion plot
 plotDispEsts(dds_filtered)
 
-# 
 
 ##########################################################
 
@@ -603,3 +614,57 @@ ggsave(file.path(figs_dir, "location_comparisons_GO_lollipop.pdf"), combined_go_
        width = 13, height = 9)
 ggsave(file.path(figs_dir, "location_comparisons_GO_lollipop.png"), combined_go_plot,
        width = 13, height = 9, dpi = 300)
+
+############## combined GO lollipop by direction for DAF_Jun vs CMT/WC Jul2 comparisons
+direction_comparisons <- c("DAF_Jun_vs_CMT_Jul2", "DAF_Jun_vs_WC_Jul2")
+direction_labels <- c(all = "All DEGs", up = "Upregulated", down = "Downregulated")
+
+direction_go_plots <- list()
+for (comparison in direction_comparisons) {
+  dir_go <- go_table %>%
+    filter(comparison == !!comparison)
+  dir_top_ids <- dir_go %>%
+    group_by(direction, ontology) %>%
+    slice_min(pvalue, n = top_terms_per_comp, with_ties = FALSE) %>%
+    ungroup() %>%
+    distinct(ontology, ID)
+
+  dir_go_tbl <- dir_go %>%
+    semi_join(dir_top_ids, by = c("ontology", "ID")) %>%
+    mutate(
+      neg_log10_p = -log10(pvalue),
+      direction = factor(direction, levels = names(direction_labels),
+                         labels = unname(direction_labels)),
+      ontology = factor(ontology, levels = c("BP", "MF", "CC")),
+      Description = str_trunc(Description, 60)
+    ) %>%
+    group_by(ontology, Description) %>%
+    mutate(best_p = max(neg_log10_p)) %>%
+    ungroup() %>%
+    mutate(Description = fct_reorder(Description, best_p))
+
+  direction_go_plots[[comparison]] <- ggplot(dir_go_tbl, aes(neg_log10_p, Description)) +
+    geom_segment(aes(x = 0, xend = neg_log10_p, yend = Description), color = "grey60") +
+    geom_point(aes(size = Count, color = p.adjust)) +
+    geom_vline(xintercept = -log10(0.05), linetype = "dashed") +
+    facet_grid(ontology ~ direction, scales = "free_y", space = "free_y", drop = FALSE) +
+    scale_color_viridis_c(direction = -1, name = "FDR") +
+    scale_x_continuous(expand = expansion(mult = c(0, 0.05))) +
+    theme_pubr(base_size = 11) +
+    labs(
+      title = unname(plot_titles[comparison]),
+      x = "-log10(p-value)", y = NULL, size = "DEGs in term"
+    ) +
+    theme(plot.title = element_text(size = 12, face = "plain"),
+          text = element_text(face = "bold", family = "sans"),
+          legend.text = element_text(face = "plain"),
+          legend.position = "right",
+          strip.background = element_rect(fill = "grey90", color = NA),
+          panel.border = element_rect(fill = NA, color = "grey70"))
+  print(direction_go_plots[[comparison]])
+
+  ggsave(file.path(figs_dir, paste0(comparison, "_GO_direction_lollipop.pdf")),
+         direction_go_plots[[comparison]], width = 13, height = 9)
+  ggsave(file.path(figs_dir, paste0(comparison, "_GO_direction_lollipop.png")),
+         direction_go_plots[[comparison]], width = 13, height = 9, dpi = 300)
+}
