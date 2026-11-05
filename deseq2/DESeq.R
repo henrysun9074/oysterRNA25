@@ -14,6 +14,7 @@ library(clusterProfiler)
 library(ashr)
 library(vsn)
 library(GO.db)
+library(ggrepel)
 
 setwd("/work/hs325/bass25")
 location_levels <- c("CMT", "DAF", "WC")
@@ -157,6 +158,30 @@ pca_plot <- ggplot(pca_data, aes(PC1, PC2, color = location, shape = time)) +
       legend.text = element_text(face = "plain")) 
 print(pca_plot)
 ggsave(file.path(figs_dir,"pca.png"), pca_plot, width = 7, height = 7, dpi = 300)
+
+# make pca plot with labels
+stopifnot(identical(pca_data$name, rownames(sample_table)))
+
+pca_plot <- ggplot(pca_data, aes(PC1, PC2, color = location, shape = time)) +
+  geom_point(size = 4, alpha = 1) +
+  geom_text_repel(
+    aes(label = name),
+    size = 2.5, show.legend = FALSE,
+    max.overlaps = Inf, box.padding = 0.4, min.segment.length = 0,
+    segment.color = "grey50", segment.size = 0.3
+  ) +
+  scale_color_brewer(palette = "Accent") +
+  scale_shape_manual(values = time_shapes) +
+  labs(
+    x = paste0("PC1: ", percent_var[1], "%"),
+    y = paste0("PC2: ", percent_var[2], "%"),
+    color = "Location", shape = "Date"
+  ) +
+  theme_pubr(base_size = 12) +
+  theme(text = element_text(face = "bold", family = "sans"),
+        legend.text = element_text(face = "plain"))
+print(pca_plot)
+ggsave(file.path(figs_dir, "pca_labeled.png"), pca_plot, width = 9, height = 9, dpi = 300)
 
 ############################### correlation plot
 vst_mat <- assay(vst_filtered)  

@@ -13,6 +13,8 @@ library(matrixStats)
 library(gridExtra)
 library(patchwork)
 library(ggpubr)
+library(clusterProfiler)
+library(GO.db)
 
 options(stringsAsFactors = FALSE)
 allowWGCNAThreads() 
@@ -55,14 +57,14 @@ number_of_wgcna_genes <- ceiling(length(gene_variance) * gene_fraction)
 cat("Genes used for WGCNA:", number_of_wgcna_genes, "of", length(gene_variance), "\n")
 
 selected_wgcna_genes <- names(sort(gene_variance, decreasing = TRUE))[seq_len(number_of_wgcna_genes)]
-# 
-# WGCNA wants samples in rows, genes in columns
+
+# # WGCNA wants samples in rows, genes in columns
 datExpr <- t(norm.counts[selected_wgcna_genes, , drop = FALSE])
 storage.mode(datExpr) <- "numeric"
 stopifnot(identical(rownames(datExpr), rownames(coldata)))
 write.csv(datExpr, file.path(wgcna_dir, paste0(run_tag, "_norm.counts.csv")))
 
-# QC: outlier genes/samples
+# # QC: outlier genes/samples
 gsg <- goodSamplesGenes(datExpr, verbose = 3)
 if (!gsg$allOK) {
   cat("Removing", sum(!gsg$goodGenes), "genes and", sum(!gsg$goodSamples), "samples\n")
@@ -70,72 +72,72 @@ if (!gsg$allOK) {
   coldata <- coldata[gsg$goodSamples, , drop = FALSE]
 }
 
-# sample clustering to eyeball outliers
-sample_tree <- hclust(dist(datExpr), method = "average")
-pdf(file.path(wgcna_figs, paste0(run_tag, "_sample_clustering.pdf")), width = 12, height = 6)
-plot(sample_tree, main = "Sample clustering (VST, WGCNA genes)", sub = "", xlab = "", cex = 0.6)
-dev.off()
-
-# Soft-threshold power - automatically calculate
-power <- c(1:10, seq(from = 12, to = 20, by = 2))
-sft <- pickSoftThreshold(
-  data = datExpr,
-  powerVector = power,
-  networkType = "signed",
-  verbose = 5
-)
-sft.data <- data.frame(sft$fitIndices)
-# for signed networks the WGCNA tutorials use -sign(slope) * R^2
-sft.data$signed.R.sq <- -sign(sft.data$slope) * sft.data$SFT.R.sq
-
-R.sq.plot <- ggplot(sft.data, aes(Power, signed.R.sq, label = Power)) +
-  geom_point() +
-  geom_text(nudge_y = 0.05) +
-  geom_hline(yintercept = r2_cutoff, color = "red") +
-  labs(x = "Power", y = "SFT.R.sq") +
-  theme_pubr()
-
-mean.k.plot <- ggplot(sft.data, aes(Power, mean.k., label = Power)) +
-  geom_point() +
-  geom_text(nudge_y = 0.05 * max(sft.data$mean.k.)) +
-  labs(x = "Power", y = "Mean connectivity") +
-  theme_pubr()
-
-sft_plot <- grid.arrange(R.sq.plot, mean.k.plot, nrow = 2)
-ggsave(file.path(wgcna_figs, paste0(run_tag, "_soft_threshold.png")), sft_plot, width = 6, height = 8)
-
-if (is.null(soft_power)) {
-  ok <- sft.data$Power[sft.data$signed.R.sq >= r2_cutoff]
-  if (length(ok) > 0) {
-    soft_power <- min(ok)
-  } else {
-    # WGCNA default for signed networks with < 30 samples
-    soft_power <- 18
-    warning("No power reached R^2 >= ", r2_cutoff)
-  }
-}
-cat("Soft threshold power:", soft_power, "\n")
-
-# Build network + modules
-temp_cor <- cor
-cor <- WGCNA::cor
-
-bwnetwk <- blockwiseModules(
-  datExpr = datExpr,
-  maxBlockSize = max(5000, ncol(datExpr)),
-  networkType = "signed",
-  TOMType = "signed",
-  power = soft_power,
-  minModuleSize = min_module_size,
-  mergeCutHeight = merge_cut_height,
-  numericLabels = FALSE,
-  pamRespectsDendro = FALSE,
-  randomSeed = 1234,
-  verbose = 3
-)
-
-cor <- temp_cor
-saveRDS(bwnetwk, file.path(wgcna_dir, paste0(run_tag, "_wgcna_results.rds")))
+# # sample clustering to eyeball outliers
+# sample_tree <- hclust(dist(datExpr), method = "average")
+# pdf(file.path(wgcna_figs, paste0(run_tag, "_sample_clustering.pdf")), width = 12, height = 6)
+# plot(sample_tree, main = "Sample clustering (VST, WGCNA genes)", sub = "", xlab = "", cex = 0.6)
+# dev.off()
+# 
+# # Soft-threshold power - automatically calculate
+# power <- c(1:10, seq(from = 12, to = 20, by = 2))
+# sft <- pickSoftThreshold(
+#   data = datExpr,
+#   powerVector = power,
+#   networkType = "signed",
+#   verbose = 5
+# )
+# sft.data <- data.frame(sft$fitIndices)
+# # for signed networks the WGCNA tutorials use -sign(slope) * R^2
+# sft.data$signed.R.sq <- -sign(sft.data$slope) * sft.data$SFT.R.sq
+# 
+# R.sq.plot <- ggplot(sft.data, aes(Power, signed.R.sq, label = Power)) +
+#   geom_point() +
+#   geom_text(nudge_y = 0.05) +
+#   geom_hline(yintercept = r2_cutoff, color = "red") +
+#   labs(x = "Power", y = "SFT.R.sq") +
+#   theme_pubr()
+# 
+# mean.k.plot <- ggplot(sft.data, aes(Power, mean.k., label = Power)) +
+#   geom_point() +
+#   geom_text(nudge_y = 0.05 * max(sft.data$mean.k.)) +
+#   labs(x = "Power", y = "Mean connectivity") +
+#   theme_pubr()
+# 
+# sft_plot <- grid.arrange(R.sq.plot, mean.k.plot, nrow = 2)
+# ggsave(file.path(wgcna_figs, paste0(run_tag, "_soft_threshold.png")), sft_plot, width = 6, height = 8)
+# 
+# if (is.null(soft_power)) {
+#   ok <- sft.data$Power[sft.data$signed.R.sq >= r2_cutoff]
+#   if (length(ok) > 0) {
+#     soft_power <- min(ok)
+#   } else {
+#     # WGCNA default for signed networks with < 30 samples
+#     soft_power <- 18
+#     warning("No power reached R^2 >= ", r2_cutoff)
+#   }
+# }
+# cat("Soft threshold power:", soft_power, "\n")
+# 
+# # Build network + modules
+# temp_cor <- cor
+# cor <- WGCNA::cor
+# 
+# bwnetwk <- blockwiseModules(
+#   datExpr = datExpr,
+#   maxBlockSize = max(5000, ncol(datExpr)),
+#   networkType = "signed",
+#   TOMType = "signed",
+#   power = soft_power,
+#   minModuleSize = min_module_size,
+#   mergeCutHeight = merge_cut_height,
+#   numericLabels = FALSE,
+#   pamRespectsDendro = FALSE,
+#   randomSeed = 1234,
+#   verbose = 3
+# )
+# 
+# cor <- temp_cor
+# saveRDS(bwnetwk, file.path(wgcna_dir, paste0(run_tag, "_wgcna_results.rds")))
 
 ############################################
 ## load existing network
@@ -373,3 +375,114 @@ for (i in seq_len(nrow(sig_pairs))) {
 dev.off()
 
 
+############################ GO enrichment for selected modules ##################
+# same GAF parsing / ancestor propagation / enricher settings as in DEG GO analysis
+
+go_modules <- c("turquoise", "brown", "blue", "green", "black", "red", "pink")
+stopifnot(all(go_modules %in% module_colors))
+
+go_dir <- file.path(out_dir, "go")
+gaf_file <- file.path(go_dir, "GCF_053477285.1-RS_2025_12_gene_ontology.gaf")
+
+gaf <- read_tsv(gaf_file, comment = "!", col_names = FALSE, col_types = cols(.default = "c"),
+                quote = "")
+gene2go <- gaf %>%
+  transmute(gene_id = X3, qualifier = X4, go_id = X5, ontology = X9) %>%
+  filter(!str_detect(qualifier, "^NOT")) %>%
+  mutate(ontology = recode(ontology, P = "BP", F = "MF", C = "CC")) %>%
+  distinct(gene_id, go_id, ontology)
+
+# propagate GAF annotations to all ancestor terms
+ancestor_maps <- list(BP = as.list(GOBPANCESTOR), MF = as.list(GOMFANCESTOR), CC = as.list(GOCCANCESTOR))
+gene2go_prop <- bind_rows(lapply(names(ancestor_maps), function(ont) {
+  direct <- gene2go %>% filter(ontology == ont)
+  anc <- ancestor_maps[[ont]][direct$go_id]
+  tibble(
+    gene_id = rep(direct$gene_id, lengths(anc) + 1L),
+    go_id = unlist(Map(c, direct$go_id, anc), use.names = FALSE),
+    ontology = ont
+  )
+})) %>%
+  filter(go_id != "all") %>%
+  distinct()
+
+term_names <- AnnotationDbi::select(GO.db, keys = unique(gene2go_prop$go_id),
+                                    columns = "TERM", keytype = "GOID") %>%
+  dplyr::rename(go_id = GOID, term = TERM)
+
+# background = all genes that went into the WGCNA NOT entire transcriptome
+wgcna_universe <- colnames(datExpr)
+cat("WGCNA genes with >=1 GO term:",
+    sum(wgcna_universe %in% gene2go$gene_id), "of", length(wgcna_universe), "\n")
+
+module_go_results <- list()
+for (mod in go_modules) {
+  mod_genes <- names(module_colors)[module_colors == mod]
+  for (ont in c("BP", "MF", "CC")) {
+    t2g <- gene2go_prop %>% filter(ontology == ont) %>% dplyr::select(go_id, gene_id)
+    ego <- enricher(
+      gene = mod_genes, universe = wgcna_universe,
+      TERM2GENE = t2g, TERM2NAME = term_names,
+      pvalueCutoff = 1, qvalueCutoff = 1, pAdjustMethod = "BH",
+      minGSSize = 5, maxGSSize = 500
+    )
+    if (is.null(ego) || nrow(as.data.frame(ego)) == 0) next
+    module_go_results[[paste(mod, ont, sep = "_")]] <- as.data.frame(ego) %>%
+      mutate(module = paste0("ME", mod), ontology = ont, .before = 1)
+  }
+}
+
+module_go_table <- bind_rows(module_go_results) %>% arrange(module, ontology, pvalue)
+write_csv(module_go_table,
+          file.path(wgcna_dir, paste0(run_tag, "_module_GO_enrichment.csv")))
+
+module_go_table %>%
+  group_by(module, ontology) %>%
+  summarise(n_p05 = sum(pvalue < 0.05), n_fdr05 = sum(p.adjust < 0.05), .groups = "drop") %>%
+  print(n = Inf)
+
+# one lollipop figure per module, facet strips filled with the module color
+top_terms_per_module <- 10
+module_go_plots <- list()
+for (mod in go_modules) {
+  me <- paste0("ME", mod)
+  mod_go_tbl <- module_go_table %>%
+    filter(module == me) %>%
+    group_by(ontology) %>%
+    slice_min(pvalue, n = top_terms_per_module, with_ties = FALSE) %>%
+    ungroup() %>%
+    mutate(
+      neg_log10_p = -log10(pvalue),
+      ontology = factor(ontology, levels = c("BP", "MF", "CC")),
+      Description = str_trunc(Description, 60),
+      Description = fct_reorder(Description, neg_log10_p)
+    )
+  if (nrow(mod_go_tbl) == 0) next
+
+  # white strip text on dark module colors, black on light ones
+  strip_rgb <- col2rgb(mod)[, 1]
+  strip_luminance <- sum(strip_rgb * c(0.299, 0.587, 0.114)) / 255
+  strip_text_color <- if (strip_luminance < 0.5) "white" else "black"
+
+  module_go_plots[[mod]] <- ggplot(mod_go_tbl, aes(neg_log10_p, Description)) +
+    geom_segment(aes(x = 0, xend = neg_log10_p, yend = Description), color = "grey60") +
+    geom_point(aes(size = Count, color = p.adjust)) +
+    geom_vline(xintercept = -log10(0.05), linetype = "dashed") +
+    facet_grid(ontology ~ module, scales = "free_y", space = "free_y") +
+    scale_color_viridis_c(direction = -1, name = "FDR") +
+    scale_x_continuous(expand = expansion(mult = c(0, 0.05))) +
+    theme_pubr(base_size = 11) +
+    labs(x = "-log10(p-value)", y = NULL, size = "Module genes\nin term") +
+    theme(text = element_text(face = "bold", family = "sans"),
+          legend.text = element_text(face = "plain"),
+          legend.position = "right",
+          strip.background = element_rect(fill = mod, color = NA),
+          strip.text = element_text(color = strip_text_color, face = "bold"),
+          panel.border = element_rect(fill = NA, color = "grey70"))
+  print(module_go_plots[[mod]])
+
+  ggsave(file.path(wgcna_figs, paste0(run_tag, "_", me, "_GO_lollipop.pdf")),
+         module_go_plots[[mod]], width = 8, height = 9)
+  ggsave(file.path(wgcna_figs, paste0(run_tag, "_", me, "_GO_lollipop.png")),
+         module_go_plots[[mod]], width = 8, height = 9, dpi = 300)
+}
