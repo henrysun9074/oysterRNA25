@@ -14,7 +14,6 @@ library(clusterProfiler)
 library(ashr)
 library(vsn)
 library(GO.db)
-library(ggplot2)
 
 setwd("/work/hs325/bass25")
 location_levels <- c("CMT", "DAF", "WC")
@@ -45,7 +44,7 @@ colnames(count_matrix)
 # location = first three letters (factor, DAF | CMT | WC)
 # time = middle date (factor, Jun 25-27, Jul 9-11, Jul 23-25)
 sample_names <- colnames(count_matrix) %>%
-  str_remove("^X\\.work\\.hs325\\.bass25\\.align\\.bam\\.") %>%
+  str_remove("^.*\\.bam\\.") %>%
   basename() %>%
   str_remove("\\.bam$") %>%
   str_remove("_sorted$")
@@ -89,17 +88,19 @@ write.csv(sample_table, file.path(out_dir, "sample_metadata.csv"), row.names = T
 
 ################################################################################
 
-### dds filter - keep only genes with >10 count in >=3 samples
-
-### rerun model if needed
+### rerun model if needed (last update 11/3/26)
 # dds <- DESeqDataSetFromMatrix(
-#   countData = count_matrix, colData = sample_table, design = ~ location * time
+#   countData = count_matrix, 
+#   colData = sample_table, 
+#   design = ~ group
 # )
 # dds <- DESeq(dds, betaPrior = FALSE)
+# saveRDS(dds, file.path(out_dir, "dds.rds"))
 
+### dds filter - keep only genes with >10 count in >=3 samples
 # groupsize <- 3L
-# keep <- rowSums(counts(dds) >= 10) >= groupsize
-
+# keep <- rowSums(count_matrix >= 10) >= groupsize
+# 
 # dds_filtered <- DESeqDataSetFromMatrix(
 #   countData = counts(dds)[keep, , drop = FALSE],
 #   colData = sample_table,
@@ -172,6 +173,8 @@ hcplot
 
 ################ load in model matrix and comparisons to run
 model_matrix <- model.matrix(design(dds_filtered), data = meta)
+stopifnot(ncol(model_matrix) == length(resultsNames(dds_filtered)))
+
 # design is ~group, so main effects are built as the equally weighted mean of group coefficients
 factor_mean <- function(var, level) {
   colMeans(unique(model_matrix[meta[[var]] == level, , drop = FALSE]))
@@ -369,21 +372,20 @@ gc()
 
 # plots for basic QC DESeq object
 # run this to get pre shrinkage
-# res <- DESeq2::results(
-#   dds_filtered, contrast = contrast_list[[comparison]],
-#   lfcThreshold = lfc.cutoff, altHypothesis = "greaterAbs", alpha = padj.cutoff
-# )
+res <- DESeq2::results(
+  dds_filtered, contrast = contrast_list[[comparison]],
+  lfcThreshold = lfc.cutoff, altHypothesis = "greaterAbs", alpha = padj.cutoff
+)
+# MA plot
+plotMA(res, ylim=c(-2,2))
 
 # vsd plot
 ntd <- normTransform(dds_filtered)
 meanSdPlot(assay(ntd))
 
-# MA plot
-plotMA(res, ylim=c(-2,2))
 
 # dispersion plot
 plotDispEsts(dds_filtered)
-
 
 ##########################################################
 
@@ -668,3 +670,5 @@ for (comparison in direction_comparisons) {
   ggsave(file.path(figs_dir, paste0(comparison, "_GO_direction_lollipop.png")),
          direction_go_plots[[comparison]], width = 13, height = 9, dpi = 300)
 }
+
+################################################################################
