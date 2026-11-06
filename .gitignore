@@ -5,8 +5,8 @@
 /rasflow/.snakemake/
 /deseq2/counts/
 /rasflow/results/
-/rasflow/workflow/
-/logs/
+/rasflow/workf
+/2024/
 /read_stats/
 *.jar
 *.png

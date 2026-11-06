@@ -200,7 +200,7 @@ me_long <- sample_level_eigengenes %>%
   pivot_longer(all_of(eigengene_columns), names_to = "module", values_to = "eigengene")
 me_box <- ggplot(me_long, aes(time, eigengene, fill = location, color = location)) +
   geom_boxplot(outlier.shape = NA, position = position_dodge(0.8), width = 0.7,
-               alpha = 0.2, color = "grey40") +
+               alpha = 0.5, color = "grey40") +
   geom_point(position = position_jitterdodge(jitter.width = 0.1, dodge.width = 0.8), size = 1.8) +
   facet_wrap(~module, scales = "free_y") +
   scale_fill_brewer(palette = "Accent") +
