@@ -6,7 +6,13 @@
 /deseq2/counts/
 /rasflow/results/
 /rasflow/workf
-/2024/
+/2024/aligned/
+/2024/counts/
+/2024/genebody/
+/2024/misc/
+/2024/raw/
+/2024/read_stats/
+/2024/trimmed/
 /read_stats/
 *.jar
 *.png
