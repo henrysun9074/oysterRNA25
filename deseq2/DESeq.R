@@ -8,7 +8,6 @@ library(DESeq2)
 library(ggpubr)
 library(pheatmap)
 library(ComplexHeatmap)
-library(EnhancedVolcano)
 library(RColorBrewer)
 library(clusterProfiler)
 library(ashr)
@@ -89,16 +88,17 @@ write.csv(sample_table, file.path(out_dir, "sample_metadata.csv"), row.names = T
 
 ################################################################################
 
-### rerun model if needed (last update 11/3/26)
+### rerun model (refit 11/7/26: earlier .rds files came from a broken R/DESeq2 build
+### with inflated dispersions, now run via ~/bin/R440 or module R/4.4.3)
 # dds <- DESeqDataSetFromMatrix(
-#   countData = count_matrix, 
-#   colData = sample_table, 
+#   countData = count_matrix,
+#   colData = sample_table,
 #   design = ~ group
 # )
 # dds <- DESeq(dds, betaPrior = FALSE)
 # saveRDS(dds, file.path(out_dir, "dds.rds"))
-
-### dds filter - keep only genes with >10 count in >=3 samples
+# 
+# ### dds filter - keep only genes with >10 count in >=3 samples
 # groupsize <- 3L
 # keep <- rowSums(count_matrix >= 10) >= groupsize
 # 
@@ -109,6 +109,10 @@ write.csv(sample_table, file.path(out_dir, "sample_metadata.csv"), row.names = T
 # )
 # dds_filtered <- DESeq(dds_filtered, betaPrior = FALSE)
 # saveRDS(dds_filtered, file.path(out_dir, "dds_filtered.rds"))
+# 
+# # sanity check: gene-wise dispersions should be well below 1 for most genes
+# cat("median gene-wise dispersion:", median(mcols(dds_filtered)$dispGeneEst), "\n")
+# stopifnot(median(mcols(dds_filtered)$dispGeneEst) < 1)
 
 ##################### choose here which dds for downstream  ####################
 
@@ -128,7 +132,7 @@ stopifnot(identical(design(dds_filtered), ~group)) # make sure this is the filte
 loc_colors <- brewer.pal(n =3, name = "Accent")
 time_shapes <- c(8,17,16)
 padj.cutoff <- 0.05
-lfc.cutoff <- 1 # tested in results() via lfcThreshold, i.e. H0: |LFC| <= lfc.cutoff
+lfc.cutoff <- 1
 top_n <- 100L
 gc()
 
@@ -140,7 +144,7 @@ meta <- as.data.frame(colData(dds_filtered))
 ### interactive 
 pca_data <- plotPCA(
   vst_filtered, intgroup = c("location", "time"),
-  ntop = min(500L, nrow(vst)), returnData = TRUE
+  ntop = min(500L, nrow(vst_filtered)), returnData = TRUE
 )
 percent_var <- round(100 * attr(pca_data, "percentVar"), 2)
 
@@ -157,7 +161,7 @@ pca_plot <- ggplot(pca_data, aes(PC1, PC2, color = location, shape = time)) +
   theme(text = element_text(face = "bold", family = "sans"),
       legend.text = element_text(face = "plain")) 
 print(pca_plot)
-ggsave(file.path(figs_dir,"pca.png"), pca_plot, width = 7, height = 7, dpi = 300)
+ggsave(device = ragg::agg_png, file.path(figs_dir,"pca.png"), pca_plot, width = 7, height = 7, dpi = 300)
 
 # make pca plot with labels
 stopifnot(identical(pca_data$name, rownames(sample_table)))
@@ -181,7 +185,7 @@ pca_plot <- ggplot(pca_data, aes(PC1, PC2, color = location, shape = time)) +
   theme(text = element_text(face = "bold", family = "sans"),
         legend.text = element_text(face = "plain"))
 print(pca_plot)
-ggsave(file.path(figs_dir, "pca_labeled.png"), pca_plot, width = 9, height = 9, dpi = 300)
+ggsave(device = ragg::agg_png, file.path(figs_dir, "pca_labeled.png"), pca_plot, width = 9, height = 9, dpi = 300)
 
 ############################### correlation plot
 vst_mat <- assay(vst_filtered)  
@@ -268,7 +272,7 @@ for (comparison in names(contrast_list)) {
     lfcThreshold = lfc.cutoff, altHypothesis = "greaterAbs", alpha = padj.cutoff
   )
   res_list[[comparison]] <- res
-  # shrink LFCs so low-count genes don't produce huge, unreliable fold changes;
+  # shrink LFCs so low-count genes don't produce huge, unreliable fold changes
   # using ashr for shrinkage for combinatorial comparison
   res <- lfcShrink(
     dds_filtered, contrast = contrast_list[[comparison]], res = res, type = "ashr"
@@ -278,8 +282,8 @@ for (comparison in names(contrast_list)) {
     rownames_to_column("gene_id") %>%
     mutate(
       significance = case_when(
-        !is.na(padj) & padj < padj.cutoff & log2FoldChange > 0 ~ "Upregulated",
-        !is.na(padj) & padj < padj.cutoff & log2FoldChange < 0 ~ "Downregulated",
+        !is.na(padj) & padj < padj.cutoff & log2FoldChange > lfc.cutoff ~ "Upregulated",
+        !is.na(padj) & padj < padj.cutoff & log2FoldChange < -lfc.cutoff ~ "Downregulated",
         TRUE ~ "Insignificant"
       ),
       significance = factor(significance, levels = c(
@@ -325,7 +329,7 @@ for (comparison in names(contrast_list)) {
           legend.text = element_text(face = "plain"))
   volcano_plots[[comparison]] <- volc
   print(volc)
-  ggsave(file.path(figs_dir, paste0(comparison, "_volcano.png")), volc,
+  ggsave(device = ragg::agg_png, file.path(figs_dir, paste0(comparison, "_volcano.png")), volc,
          width = 8, height = 6, dpi = 300)
   ggsave(file.path(figs_dir, paste0(comparison, "_volcano.pdf")), volc,
          width = 8, height = 6)
@@ -368,7 +372,7 @@ for (comparison in names(contrast_list)) {
   pdf(file.path(figs_dir, paste0(comparison, "_top_DEGs_heatmap.pdf")), width = 9, height = 8)
   draw(hm)
   dev.off()
-  png(file.path(figs_dir, paste0(comparison, "_top_DEGs_heatmap.png")),
+  ragg::agg_png(file.path(figs_dir, paste0(comparison, "_top_DEGs_heatmap.png")),
       width = 9, height = 8, units = "in", res = 300)
   draw(hm)
   dev.off()
@@ -390,10 +394,9 @@ print(combined_volcano)
 
 ggsave(file.path(figs_dir, "combined_volcano.pdf"), combined_volcano,
        width = 12, height = 9)
-ggsave(file.path(figs_dir, "combined_volcano.png"), combined_volcano,
+ggsave(device = ragg::agg_png, file.path(figs_dir, "combined_volcano.png"), combined_volcano,
        width = 12, height = 9)
 gc()
-
 
 # plots for basic QC DESeq object
 # run this to get pre shrinkage
@@ -407,7 +410,6 @@ plotMA(res, ylim=c(-2,2))
 # vsd plot
 ntd <- normTransform(dds_filtered)
 meanSdPlot(assay(ntd))
-
 
 # dispersion plot
 plotDispEsts(dds_filtered)
@@ -639,7 +641,7 @@ print(combined_go_plot)
 
 ggsave(file.path(figs_dir, "location_comparisons_GO_lollipop.pdf"), combined_go_plot,
        width = 13, height = 9)
-ggsave(file.path(figs_dir, "location_comparisons_GO_lollipop.png"), combined_go_plot,
+ggsave(device = ragg::agg_png, file.path(figs_dir, "location_comparisons_GO_lollipop.png"), combined_go_plot,
        width = 13, height = 9, dpi = 300)
 
 ############## combined GO lollipop by direction for DAF_Jun vs CMT/WC Jul2 comparisons
@@ -692,7 +694,7 @@ for (comparison in direction_comparisons) {
 
   ggsave(file.path(figs_dir, paste0(comparison, "_GO_direction_lollipop.pdf")),
          direction_go_plots[[comparison]], width = 13, height = 9)
-  ggsave(file.path(figs_dir, paste0(comparison, "_GO_direction_lollipop.png")),
+  ggsave(device = ragg::agg_png, file.path(figs_dir, paste0(comparison, "_GO_direction_lollipop.png")),
          direction_go_plots[[comparison]], width = 13, height = 9, dpi = 300)
 }
 

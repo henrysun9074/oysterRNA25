@@ -104,7 +104,7 @@ if (!gsg$allOK) {
 #   theme_pubr()
 # 
 # sft_plot <- grid.arrange(R.sq.plot, mean.k.plot, nrow = 2)
-# ggsave(file.path(wgcna_figs, paste0(run_tag, "_soft_threshold.png")), sft_plot, width = 6, height = 8)
+# ggsave(device = ragg::agg_png, file.path(wgcna_figs, paste0(run_tag, "_soft_threshold.png")), sft_plot, width = 6, height = 8)
 # 
 # if (is.null(soft_power)) {
 #   ok <- sft.data$Power[sft.data$signed.R.sq >= r2_cutoff]
@@ -210,7 +210,7 @@ me_box <- ggplot(me_long, aes(time, eigengene, fill = location, color = location
 print(me_box)
 ggsave(file.path(wgcna_figs, paste0(run_tag, "_eigengene_boxplots.pdf")), me_box,
        width = 12, height = 8)
-ggsave(file.path(wgcna_figs, paste0(run_tag, "_eigengene_boxplots.png")), me_box,
+ggsave(device = ragg::agg_png, file.path(wgcna_figs, paste0(run_tag, "_eigengene_boxplots.png")), me_box,
        width = 12, height = 8)
 
 # Trait matrix with location + time
@@ -320,7 +320,7 @@ print(final_wgcna_plot)
 
 ggsave(file.path(wgcna_figs, paste0(run_tag, "_module_trait_heatmap.pdf")), final_wgcna_plot,
        width = 10, height = max(4, 0.45 * length(module_order) + 2), dpi = 600, bg = "white")
-ggsave(file.path(wgcna_figs, paste0(run_tag, "_module_trait_heatmap.png")), final_wgcna_plot,
+ggsave(device = ragg::agg_png, file.path(wgcna_figs, paste0(run_tag, "_module_trait_heatmap.png")), final_wgcna_plot,
        width = 10, height = max(4, 0.45 * length(module_order) + 2))
 
 # Module membership (kME) + gene significance -> hub genes
@@ -483,6 +483,6 @@ for (mod in go_modules) {
 
   ggsave(file.path(wgcna_figs, paste0(run_tag, "_", me, "_GO_lollipop.pdf")),
          module_go_plots[[mod]], width = 8, height = 9)
-  ggsave(file.path(wgcna_figs, paste0(run_tag, "_", me, "_GO_lollipop.png")),
+  ggsave(device = ragg::agg_png, file.path(wgcna_figs, paste0(run_tag, "_", me, "_GO_lollipop.png")),
          module_go_plots[[mod]], width = 8, height = 9, dpi = 300)
 }

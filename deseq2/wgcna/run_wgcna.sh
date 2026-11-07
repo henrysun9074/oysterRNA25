@@ -10,8 +10,7 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=hs325@duke.edu
 
-module load R/4.4.3
-
+# R/4.4.3 has no WGCNA; R440 = module R/4.4.0 + ~/R/4.4.0-rhel9 (see ~/bin/R440)
 cd /work/hs325/bass25/deseq2/wgcna
 
-Rscript WGCNA.R
+$HOME/bin/R440 WGCNA.R

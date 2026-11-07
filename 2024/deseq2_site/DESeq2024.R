@@ -20,9 +20,9 @@ library(limma)
 #     effect is a single model coefficient
 #   - LFC shrinkage is apeglm instead of ashr
 
-setwd("/work/hs325/bass25/2024/misc/counts")
+setwd("/work/hs325/bass25/2024")
 
-counts_2024_file <- "/work/hs325/bass25/2024/misc/counts/counts_matrix_exon_6Nov26_2024.txt"
+counts_2024_file <- "/work/hs325/bass25/2024/counts/counts_matrix_exon_2024.txt"
 counts_2025_file <- "/work/hs325/bass25/align/trimmomatic/counts/counts_matrix_exon_2Nov26.txt"
 gaf_file <- "/work/hs325/bass25/deseq2/go/GCF_053477285.1-RS_2025_12_gene_ontology.gaf"
 
@@ -106,19 +106,22 @@ write.csv(sample_table, file.path(out_dir, "sample_metadata.csv"), row.names = T
 
 ### dds filter - keep only genes with >=10 counts in >=3 samples
 # applied after dropping WC, so genes expressed only in WC are not retained
-groupsize <- 3L
-keep <- rowSums(count_matrix >= 10) >= groupsize
-cat("Genes kept:", sum(keep), "of", nrow(count_matrix), "\n")
+# groupsize <- 3L
+# keep <- rowSums(count_matrix >= 10) >= groupsize
+# cat("Genes kept:", sum(keep), "of", nrow(count_matrix), "\n")
+# 
+# # collection absorbs year/line and within-season differences, leaving
+# # location as the DAF vs CMT effect shared across all six events
+# dds_filtered <- DESeqDataSetFromMatrix(
+#   countData = count_matrix[keep, , drop = FALSE],
+#   colData = sample_table,
+#   design = ~ collection + location
+# )
+# dds_filtered <- DESeq(dds_filtered, betaPrior = FALSE)
+# saveRDS(dds_filtered, file.path(out_dir, "dds_filtered.rds"))
 
-# collection absorbs year/line and within-season differences, leaving
-# location as the DAF vs CMT effect shared across all six events
-dds_filtered <- DESeqDataSetFromMatrix(
-  countData = count_matrix[keep, , drop = FALSE],
-  colData = sample_table,
-  design = ~ collection + location
-)
-dds_filtered <- DESeq(dds_filtered, betaPrior = FALSE)
-saveRDS(dds_filtered, file.path(out_dir, "dds_filtered.rds"))
+## load in thing
+dds_filtered <- readRDS(file.path(out_dir, "dds_filtered.rds"))
 
 ################################################################################
 
@@ -155,7 +158,8 @@ pca_plot <- ggplot(pca_data, aes(PC1, PC2, color = location, shape = collection)
   theme(text = element_text(face = "bold", family = "sans"),
         legend.text = element_text(face = "plain"))
 print(pca_plot)
-ggsave(file.path(figs_dir, "pca.png"), pca_plot, width = 7, height = 7, dpi = 300)
+ggsave(file.path(figs_dir, "pca.png"), pca_plot, width = 7, height = 7, dpi = 300,
+       device = ragg::agg_png)
 
 # make pca plot with labels
 pca_plot_labeled <- pca_plot +
@@ -166,7 +170,8 @@ pca_plot_labeled <- pca_plot +
     segment.color = "grey50", segment.size = 0.3
   )
 print(pca_plot_labeled)
-ggsave(file.path(figs_dir, "pca_labeled.png"), pca_plot_labeled, width = 9, height = 9, dpi = 300)
+ggsave(file.path(figs_dir, "pca_labeled.png"), pca_plot_labeled, width = 9, height = 9, dpi = 300,
+       device = ragg::agg_png)
 
 ############################### correlation plot
 vst_cor <- cor(vst_filtered_matrix)
@@ -175,8 +180,11 @@ hcplot <- pheatmap::pheatmap(vst_cor,
    color = heat.colors,
    fontsize_col = 6,
    fontsize_row = 6,
-   filename = file.path(figs_dir, "sample_correlation.png"),
-   width = 10, height = 10)
+   silent = TRUE)
+ragg::agg_png(file.path(figs_dir, "sample_correlation.png"),
+              width = 10, height = 10, units = "in", res = 300)
+grid::grid.draw(hcplot$gtable)
+dev.off()
 
 gc()
 ################################################################################
@@ -186,9 +194,9 @@ plot_title <- "DAF vs CMT"
 site_coef <- "location_DAF_vs_CMT"
 stopifnot(site_coef %in% resultsNames(dds_filtered))
 
+# Wald test against LFC = 0
 res_unshrunk <- DESeq2::results(
-  dds_filtered, name = site_coef,
-  lfcThreshold = lfc.cutoff, altHypothesis = "greaterAbs", alpha = padj.cutoff
+  dds_filtered, name = site_coef, alpha = padj.cutoff
 )
 
 res_shrunk <- lfcShrink(
@@ -200,9 +208,8 @@ result_tbl <- as.data.frame(res_shrunk) %>%
   rownames_to_column("gene_id") %>%
   mutate(
     significance = case_when(
-      # padj tests the unshrunk LFC, so also require the shrunk LFC to pass the cutoff
-      !is.na(padj) & padj < padj.cutoff & log2FoldChange >= lfc.cutoff ~ "Upregulated",
-      !is.na(padj) & padj < padj.cutoff & log2FoldChange <= -lfc.cutoff ~ "Downregulated",
+      !is.na(padj) & padj < padj.cutoff & log2FoldChange > lfc.cutoff ~ "Upregulated",
+      !is.na(padj) & padj < padj.cutoff & log2FoldChange < -lfc.cutoff ~ "Downregulated",
       TRUE ~ "Insignificant"
     ),
     significance = factor(significance, levels = c(
@@ -237,13 +244,13 @@ volc <- ggplot(plot_tbl, aes(log2FoldChange, neg_log10_padj, color = significanc
   geom_point(alpha = 0.6, size = 1.5) +
   geom_vline(xintercept = c(-lfc.cutoff, lfc.cutoff), linetype = "dashed") +
   geom_hline(yintercept = -log10(padj.cutoff), linetype = "dashed") +
-  geom_text_repel(
-    data = ~ filter(.x, significance != "Insignificant"),
-    aes(label = gene_id),
-    size = 2.5, show.legend = FALSE,
-    max.overlaps = Inf, box.padding = 0.4, min.segment.length = 0,
-    segment.color = "grey50", segment.size = 0.3
-  ) +
+  # geom_text_repel(
+  #   data = ~ filter(.x, significance != "Insignificant"),
+  #   aes(label = gene_id),
+  #   size = 2.5, show.legend = FALSE,
+  #   max.overlaps = Inf, box.padding = 0.4, min.segment.length = 0,
+  #   segment.color = "grey50", segment.size = 0.3
+  # ) +
   scale_color_manual(values = c(
     "Downregulated" = "coral2",
     "Insignificant" = "grey75",
@@ -261,7 +268,7 @@ volc <- ggplot(plot_tbl, aes(log2FoldChange, neg_log10_padj, color = significanc
         legend.text = element_text(face = "plain"))
 print(volc)
 ggsave(file.path(figs_dir, paste0(comparison, "_volcano.png")), volc,
-       width = 8, height = 6, dpi = 300)
+       width = 8, height = 6, dpi = 300, device = ragg::agg_png)
 ggsave(file.path(figs_dir, paste0(comparison, "_volcano.pdf")), volc,
        width = 8, height = 6)
 
@@ -304,8 +311,8 @@ draw(hm)
 pdf(file.path(figs_dir, paste0(comparison, "_top_DEGs_heatmap.pdf")), width = 9, height = 8)
 draw(hm)
 dev.off()
-png(file.path(figs_dir, paste0(comparison, "_top_DEGs_heatmap.png")),
-    width = 9, height = 8, units = "in", res = 300)
+ragg::agg_png(file.path(figs_dir, paste0(comparison, "_top_DEGs_heatmap.png")),
+              width = 9, height = 8, units = "in", res = 300)
 draw(hm)
 dev.off()
 gc()
@@ -320,6 +327,7 @@ ntd <- normTransform(dds_filtered)
 print(meanSdPlot(assay(ntd), plot = FALSE)$gg)
 # dispersion plot
 plotDispEsts(dds_filtered)
+median(mcols(dds_filtered)$dispGeneEst)
 
 ############################ run GO enrichment ##################################
 
@@ -438,7 +446,7 @@ print(direction_go_plot)
 ggsave(file.path(figs_dir, paste0(comparison, "_GO_direction_lollipop.pdf")),
        direction_go_plot, width = 13, height = 9)
 ggsave(file.path(figs_dir, paste0(comparison, "_GO_direction_lollipop.png")),
-       direction_go_plot, width = 13, height = 9, dpi = 300)
+       direction_go_plot, width = 13, height = 9, dpi = 300, device = ragg::agg_png)
 
 ################################################################################
 
