@@ -158,7 +158,7 @@ pca_plot <- ggplot(pca_data, aes(PC1, PC2, color = location, shape = collection)
   theme(text = element_text(face = "bold", family = "sans"),
         legend.text = element_text(face = "plain"))
 print(pca_plot)
-ggsave(file.path(figs_dir, "pca.png"), pca_plot, width = 7, height = 7, dpi = 300,
+ggsave(file.path(figs_dir, "pca.png"), pca_plot, width = 8, height = 7, dpi = 300,
        device = ragg::agg_png)
 
 # make pca plot with labels
@@ -170,7 +170,7 @@ pca_plot_labeled <- pca_plot +
     segment.color = "grey50", segment.size = 0.3
   )
 print(pca_plot_labeled)
-ggsave(file.path(figs_dir, "pca_labeled.png"), pca_plot_labeled, width = 9, height = 9, dpi = 300,
+ggsave(file.path(figs_dir, "pca_labeled.png"), pca_plot_labeled, width = 10, height = 9, dpi = 300,
        device = ragg::agg_png)
 
 ############################### correlation plot

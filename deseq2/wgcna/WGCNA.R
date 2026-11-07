@@ -72,76 +72,76 @@ if (!gsg$allOK) {
   coldata <- coldata[gsg$goodSamples, , drop = FALSE]
 }
 
-# # sample clustering to eyeball outliers
-# sample_tree <- hclust(dist(datExpr), method = "average")
-# pdf(file.path(wgcna_figs, paste0(run_tag, "_sample_clustering.pdf")), width = 12, height = 6)
-# plot(sample_tree, main = "Sample clustering (VST, WGCNA genes)", sub = "", xlab = "", cex = 0.6)
-# dev.off()
-# 
-# # Soft-threshold power - automatically calculate
-# power <- c(1:10, seq(from = 12, to = 20, by = 2))
-# sft <- pickSoftThreshold(
-#   data = datExpr,
-#   powerVector = power,
-#   networkType = "signed",
-#   verbose = 5
-# )
-# sft.data <- data.frame(sft$fitIndices)
-# # for signed networks the WGCNA tutorials use -sign(slope) * R^2
-# sft.data$signed.R.sq <- -sign(sft.data$slope) * sft.data$SFT.R.sq
-# 
-# R.sq.plot <- ggplot(sft.data, aes(Power, signed.R.sq, label = Power)) +
-#   geom_point() +
-#   geom_text(nudge_y = 0.05) +
-#   geom_hline(yintercept = r2_cutoff, color = "red") +
-#   labs(x = "Power", y = "SFT.R.sq") +
-#   theme_pubr()
-# 
-# mean.k.plot <- ggplot(sft.data, aes(Power, mean.k., label = Power)) +
-#   geom_point() +
-#   geom_text(nudge_y = 0.05 * max(sft.data$mean.k.)) +
-#   labs(x = "Power", y = "Mean connectivity") +
-#   theme_pubr()
-# 
-# sft_plot <- grid.arrange(R.sq.plot, mean.k.plot, nrow = 2)
-# ggsave(device = ragg::agg_png, file.path(wgcna_figs, paste0(run_tag, "_soft_threshold.png")), sft_plot, width = 6, height = 8)
-# 
-# if (is.null(soft_power)) {
-#   ok <- sft.data$Power[sft.data$signed.R.sq >= r2_cutoff]
-#   if (length(ok) > 0) {
-#     soft_power <- min(ok)
-#   } else {
-#     # WGCNA default for signed networks with < 30 samples
-#     soft_power <- 18
-#     warning("No power reached R^2 >= ", r2_cutoff)
-#   }
-# }
-# cat("Soft threshold power:", soft_power, "\n")
-# 
-# # Build network + modules
-# temp_cor <- cor
-# cor <- WGCNA::cor
-# 
-# bwnetwk <- blockwiseModules(
-#   datExpr = datExpr,
-#   maxBlockSize = max(5000, ncol(datExpr)),
-#   networkType = "signed",
-#   TOMType = "signed",
-#   power = soft_power,
-#   minModuleSize = min_module_size,
-#   mergeCutHeight = merge_cut_height,
-#   numericLabels = FALSE,
-#   pamRespectsDendro = FALSE,
-#   randomSeed = 1234,
-#   verbose = 3
-# )
-# 
-# cor <- temp_cor
-# saveRDS(bwnetwk, file.path(wgcna_dir, paste0(run_tag, "_wgcna_results.rds")))
+# sample clustering to eyeball outliers
+sample_tree <- hclust(dist(datExpr), method = "average")
+pdf(file.path(wgcna_figs, paste0(run_tag, "_sample_clustering.pdf")), width = 12, height = 6)
+plot(sample_tree, main = "Sample clustering (VST, WGCNA genes)", sub = "", xlab = "", cex = 0.6)
+dev.off()
+
+# Soft-threshold power - automatically calculate
+power <- c(1:10, seq(from = 12, to = 20, by = 2))
+sft <- pickSoftThreshold(
+  data = datExpr,
+  powerVector = power,
+  networkType = "signed",
+  verbose = 5
+)
+sft.data <- data.frame(sft$fitIndices)
+# for signed networks the WGCNA tutorials use -sign(slope) * R^2
+sft.data$signed.R.sq <- -sign(sft.data$slope) * sft.data$SFT.R.sq
+
+R.sq.plot <- ggplot(sft.data, aes(Power, signed.R.sq, label = Power)) +
+  geom_point() +
+  geom_text(nudge_y = 0.05) +
+  geom_hline(yintercept = r2_cutoff, color = "red") +
+  labs(x = "Power", y = "SFT.R.sq") +
+  theme_pubr()
+
+mean.k.plot <- ggplot(sft.data, aes(Power, mean.k., label = Power)) +
+  geom_point() +
+  geom_text(nudge_y = 0.05 * max(sft.data$mean.k.)) +
+  labs(x = "Power", y = "Mean connectivity") +
+  theme_pubr()
+
+sft_plot <- grid.arrange(R.sq.plot, mean.k.plot, nrow = 2)
+ggsave(device = ragg::agg_png, file.path(wgcna_figs, paste0(run_tag, "_soft_threshold.png")), sft_plot, width = 6, height = 8)
+
+if (is.null(soft_power)) {
+  ok <- sft.data$Power[sft.data$signed.R.sq >= r2_cutoff]
+  if (length(ok) > 0) {
+    soft_power <- min(ok)
+  } else {
+    # WGCNA default for signed networks with < 30 samples
+    soft_power <- 18
+    warning("No power reached R^2 >= ", r2_cutoff)
+  }
+}
+cat("Soft threshold power:", soft_power, "\n")
+
+# Build network + modules
+temp_cor <- cor
+cor <- WGCNA::cor
+
+bwnetwk <- blockwiseModules(
+  datExpr = datExpr,
+  maxBlockSize = max(5000, ncol(datExpr)),
+  networkType = "signed",
+  TOMType = "signed",
+  power = soft_power,
+  minModuleSize = min_module_size,
+  mergeCutHeight = merge_cut_height,
+  numericLabels = FALSE,
+  pamRespectsDendro = FALSE,
+  randomSeed = 1234,
+  verbose = 3
+)
+
+cor <- temp_cor
+saveRDS(bwnetwk, file.path(wgcna_dir, paste0(run_tag, "_wgcna_results.rds")))
 
 ############################################
 ## load existing network
-bwnetwk <- readRDS(file.path(wgcna_dir, paste0(run_tag, "_wgcna_results.rds")))
+# bwnetwk <- readRDS(file.path(wgcna_dir, paste0(run_tag, "_wgcna_results.rds")))
 
 ############################################ downstream analysis
 # modules

@@ -161,7 +161,7 @@ pca_plot <- ggplot(pca_data, aes(PC1, PC2, color = location, shape = time)) +
   theme(text = element_text(face = "bold", family = "sans"),
       legend.text = element_text(face = "plain")) 
 print(pca_plot)
-ggsave(device = ragg::agg_png, file.path(figs_dir,"pca.png"), pca_plot, width = 7, height = 7, dpi = 300)
+ggsave(device = ragg::agg_png, file.path(figs_dir,"pca.png"), pca_plot, width = 10, height = 7, dpi = 300)
 
 # make pca plot with labels
 stopifnot(identical(pca_data$name, rownames(sample_table)))
@@ -185,7 +185,7 @@ pca_plot <- ggplot(pca_data, aes(PC1, PC2, color = location, shape = time)) +
   theme(text = element_text(face = "bold", family = "sans"),
         legend.text = element_text(face = "plain"))
 print(pca_plot)
-ggsave(device = ragg::agg_png, file.path(figs_dir, "pca_labeled.png"), pca_plot, width = 9, height = 9, dpi = 300)
+ggsave(device = ragg::agg_png, file.path(figs_dir, "pca_labeled.png"), pca_plot, width = 11, height = 9, dpi = 300)
 
 ############################### correlation plot
 vst_mat <- assay(vst_filtered)  
@@ -312,11 +312,9 @@ for (comparison in names(contrast_list)) {
     geom_vline(xintercept = c(-lfc.cutoff, lfc.cutoff), linetype = "dashed") +
     geom_hline(yintercept = -log10(padj.cutoff), linetype = "dashed") +
     scale_color_manual(values = c(
-      "Downregulated" = "cyan3",
       "Insignificant" = "grey75",
-      "Upregulated" = "deeppink4"
-      # "Downregulated" = "darkgreen",
-      # "Upregulated" = "coral4"
+      "Downregulated" = "darkgreen",
+      "Upregulated" = "coral4"
     ), drop = FALSE) +
     theme_pubr(base_size = 12) +
     labs(
@@ -400,12 +398,12 @@ gc()
 
 # plots for basic QC DESeq object
 # run this to get pre shrinkage
-res <- DESeq2::results(
-  dds_filtered, contrast = contrast_list[[comparison]],
-  lfcThreshold = lfc.cutoff, altHypothesis = "greaterAbs", alpha = padj.cutoff
-)
-# MA plot
-plotMA(res, ylim=c(-2,2))
+# res <- DESeq2::results(
+#   dds_filtered, contrast = contrast_list[[comparison]],
+#   lfcThreshold = lfc.cutoff, altHypothesis = "greaterAbs", alpha = padj.cutoff
+# )
+# DESeq2::plotMA(res, ylim = c(-2, 2), main = "unshrunk")
+DESeq2::plotMA(res, ylim = c(-2, 2), main = "ashr")
 
 # vsd plot
 ntd <- normTransform(dds_filtered)
