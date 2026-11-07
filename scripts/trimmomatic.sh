@@ -1,9 +1,9 @@
 #!/bin/bash -e
 #SBATCH --job-name=trimmomatic
 #SBATCH --time=7-00:00:00
-#SBATCH --array=1-27
-#SBATCH --output=/work/hs325/bass25/misc/trimmomatic_%a.out
-#SBATCH --error=/work/hs325/bass25/misc/trimmomatic_%a.err
+#SBATCH --array=1-18
+#SBATCH --output=/work/hs325/bass25/2024/misc/trimmomatic_%a.out
+#SBATCH --error=/work/hs325/bass25/2024/misc/trimmomatic_%a.err
 #SBATCH --partition=scavenger
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
@@ -17,8 +17,8 @@ conda activate RNA-seq
 module load Trimmomatic/0.38
 
 ## Set paths ##
-RAW_DIR=/work/hs325/bass25/raw
-TRIMMED_DIR=/work/hs325/bass25/clean/trimmomatic
+RAW_DIR=/work/hs325/bass25/2024/raw
+TRIMMED_DIR=/work/hs325/bass25/2024/trimmed
 ADAPTERS=/opt/apps/rhel7/Trimmomatic-0.38/adapters/TruSeq3-PE-2.fa
 mkdir -p ${TRIMMED_DIR}
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=postalign_multiqc_trimmomatic
 #SBATCH --time=02:00:00
-#SBATCH --output=/work/hs325/bass25/misc/postalign_multiqc_trimmomatic.out
-#SBATCH --error=/work/hs325/bass25/misc/postalign_multiqc_trimmomatic.err
+#SBATCH --output=/work/hs325/bass25/2024/misc/postalign_multiqc_trimmomatic.out
+#SBATCH --error=/work/hs325/bass25/2024/misc/postalign_multiqc_trimmomatic.err
 #SBATCH --partition=scavenger
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -17,7 +17,7 @@ source /hpc/group/schultzlab/hs325/miniconda3/etc/profile.d/conda.sh
 conda activate RNA-seq
 
 # run multiqc on these new ones
-SAM_DIR="${1:-/work/hs325/bass25/align/trimmomatic}"
+SAM_DIR="${1:-/work/hs325/bass25/2024/aligned}"
 MULTIQC_OUT="$SAM_DIR/multiqc"
 
 shopt -s nullglob

@@ -1,8 +1,8 @@
 #!/bin/bash -e
 #SBATCH --job-name=featureCounts_trimmomatic
 #SBATCH --time=7-00:00:00
-#SBATCH --output=/work/hs325/bass25/misc/featureCounts_trimmomatic.out
-#SBATCH --error=/work/hs325/bass25/misc/featureCounts_trimmomatic.err
+#SBATCH --output=/work/hs325/bass25/2024/misc/featureCounts_trimmomatic.out
+#SBATCH --error=/work/hs325/bass25/2024/misc/featureCounts_trimmomatic.err
 #SBATCH --partition=common
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=12
@@ -15,8 +15,8 @@ module load Subread
 
 ## Set paths ## 
 GENOME=/work/hs325/cvpan/asms/yu25/ncbi_dataset/data/GCF_053477285.1
-BAM_DIR="/work/hs325/bass25/align/trimmomatic/bam"
-COUNT_DIR="/work/hs325/bass25/align/trimmomatic/counts"
+BAM_DIR="/work/hs325/bass25/2024/aligned/bam"
+COUNT_DIR="/work/hs325/bass25/2024/counts"
 mkdir -p ${COUNT_DIR}
 
 #### fix the genome gtf file

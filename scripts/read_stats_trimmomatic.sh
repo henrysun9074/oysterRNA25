@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=read_stats_trimmomatic
 #SBATCH --time=06:00:00
-#SBATCH --output=/work/hs325/bass25/misc/read_stats_trimmomatic_%a.out
-#SBATCH --error=/work/hs325/bass25/misc/read_stats_trimmomatic_%a.err
+#SBATCH --output=/work/hs325/bass25/2024/misc/read_stats_trimmomatic_%a.out
+#SBATCH --error=/work/hs325/bass25/2024/misc/read_stats_trimmomatic_%a.err
 #SBATCH --partition=common
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -21,13 +21,13 @@ source /hpc/group/schultzlab/hs325/miniconda3/etc/profile.d/conda.sh
 conda activate RNA-seq
 
 ## Set paths ##
-RAW_DIR=/work/hs325/bass25/raw
-TRIMMED_DIR=/work/hs325/bass25/clean/trimmomatic
-ALIGNED_DIR=/work/hs325/bass25/align/trimmomatic
-COUNTS_SUMMARY=${ALIGNED_DIR}/counts/counts_matrix_exon_2Nov26.txt.summary
-FACILITY_METRICS=/work/hs325/bass25/misc/Quality_Metrics.csv
-STATS_DIR=/work/hs325/bass25/read_stats
-LOG_DIR=/work/hs325/bass25/misc
+RAW_DIR=/work/hs325/bass25/2024/raw
+TRIMMED_DIR=/work/hs325/bass25/2024/trimmed
+ALIGNED_DIR=/work/hs325/bass25/2024/aligned
+COUNTS_SUMMARY=/work/hs325/bass25/2024/counts/counts_matrix_exon_2Nov26.txt.summary
+FACILITY_METRICS=/work/hs325/bass25/2024/raw/Quality_Metrics.csv
+STATS_DIR=/work/hs325/bass25/2024/read_stats
+LOG_DIR=/work/hs325/bass25/2024/misc
 mkdir -p ${STATS_DIR}/trimmed_fastp ${STATS_DIR}/raw_fastp
 
 # Make list of raw sample names

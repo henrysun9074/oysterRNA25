@@ -1,9 +1,9 @@
 #!/bin/bash -e
 #SBATCH --job-name=Yale25_trimmomatic_alignment_array
 #SBATCH --time=7-00:00:00
-#SBATCH --array=1-27
-#SBATCH --output=/work/hs325/bass25/misc/Yale25_trimmomatic_hisat2_alignment_%a.out
-#SBATCH --error=/work/hs325/bass25/misc/Yale25_trimmomatic_hisat2_alignment_%a.err
+#SBATCH --array=1-18
+#SBATCH --output=/work/hs325/bass25/2024/misc/Yale25_trimmomatic_hisat2_alignment_%a.out
+#SBATCH --error=/work/hs325/bass25/2024/misc/Yale25_trimmomatic_hisat2_alignment_%a.err
 #SBATCH --partition=schultzlab
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
@@ -18,10 +18,10 @@ source /hpc/group/schultzlab/hs325/miniconda3/etc/profile.d/conda.sh
 module load HISAT2
 
 ## Set Paths for Alignment ## 
-RAW_DIR=/work/hs325/bass25/raw
-TRIMMED_DIR=/work/hs325/bass25/clean/trimmomatic
+RAW_DIR=/work/hs325/bass25/2024/raw
+TRIMMED_DIR=/work/hs325/bass25/2024/trimmed
 INDEX_DIR=/work/hs325/bass25/align/index
-ALIGNED_DIR=/work/hs325/bass25/align/trimmomatic
+ALIGNED_DIR=/work/hs325/bass25/2024/aligned
 mkdir -p ${ALIGNED_DIR} 
 
 ## Set up direction/path to each sample ##

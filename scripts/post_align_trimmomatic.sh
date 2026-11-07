@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=postalign_trimmomatic
 #SBATCH --time=7-00:00:00
-#SBATCH --output=/work/hs325/bass25/misc/postalign_trimmomatic_%a.out
-#SBATCH --error=/work/hs325/bass25/misc/postalign_trimmomatic_%a.err
+#SBATCH --output=/work/hs325/bass25/2024/misc/postalign_trimmomatic_%a.out
+#SBATCH --error=/work/hs325/bass25/2024/misc/postalign_trimmomatic_%a.err
 #SBATCH --partition=schultzlab
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -11,12 +11,14 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=hs325@duke.edu
 
+# bash post_align_trimmomatic.sh  
+
 set -eo pipefail
 
 # define file paths
-ALIGNED_DIR="/work/hs325/bass25/align/trimmomatic"
+ALIGNED_DIR="/work/hs325/bass25/2024/aligned"
 BAM_DIR="$ALIGNED_DIR/bam"
-LOG_DIR="/work/hs325/bass25/misc"
+LOG_DIR="/work/hs325/bass25/2024/misc"
 SORT_MEMORY_PER_THREAD="2G"
 
 ### convert SAM to BAM and sort/index the BAM files using an array
