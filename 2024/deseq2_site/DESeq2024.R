@@ -252,9 +252,9 @@ volc <- ggplot(plot_tbl, aes(log2FoldChange, neg_log10_padj, color = significanc
   #   segment.color = "grey50", segment.size = 0.3
   # ) +
   scale_color_manual(values = c(
-    "Downregulated" = "coral2",
-    "Insignificant" = "grey75",
-    "Upregulated" = "dodgerblue4"
+    "Downregulated" = "#7FC97F",
+    "Insignificant" = "grey55",
+    "Upregulated" = "#BEAED4"
   ), drop = FALSE) +
   # ylim(0,20)+
   theme_pubr(base_size = 12) +
