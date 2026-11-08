@@ -643,7 +643,7 @@ ggsave(device = ragg::agg_png, file.path(figs_dir, "location_comparisons_GO_loll
        width = 13, height = 9, dpi = 300)
 
 ############## combined GO lollipop by direction for DAF_Jun vs CMT/WC Jul2 comparisons
-direction_comparisons <- c("DAF_Jun_vs_CMT_Jul2", "DAF_Jun_vs_WC_Jul2")
+direction_comparisons <- c("DAF_Jun_vs_CMT_Jul2", "DAF_Jun_vs_WC_Jul2", location_comparisons)
 direction_labels <- c(all = "All DEGs", up = "Upregulated", down = "Downregulated")
 
 direction_go_plots <- list()
