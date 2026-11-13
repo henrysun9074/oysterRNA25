@@ -450,3 +450,64 @@ ggsave(file.path(figs_dir, paste0(comparison, "_GO_direction_lollipop.png")),
 
 ################################################################################
 
+############## 2024 (diploid) vs 2025 (triploid): average counts per gene ##############
+# uses the raw, unfiltered count_matrix 
+year_vec <- sample_table$year
+
+# per-sample totals
+sample_totals <- tibble(
+  sample = colnames(count_matrix),
+  year = year_vec,
+  location = sample_table$location,
+  total_counts = colSums(count_matrix),
+  genes_detected = colSums(count_matrix > 0),
+  mean_counts_per_gene = colMeans(count_matrix)
+)
+sample_totals %>%
+  group_by(year) %>%
+  summarise(n = n(),
+            mean_total = mean(total_counts), sd_total = sd(total_counts),
+            mean_counts_per_gene = mean(mean_counts_per_gene),
+            mean_genes_detected = mean(genes_detected), .groups = "drop") %>%
+  print()
+print(wilcox.test(mean_counts_per_gene ~ year, data = sample_totals))
+write_csv(sample_totals, file.path(out_dir, "year_sample_totals.csv"))
+
+# per-gene means within each year both raw and CPM
+cpm_matrix <- sweep(count_matrix, 2, colSums(count_matrix), "/") * 1e6
+gene_year_tbl <- tibble(
+  gene_id = rownames(count_matrix),
+  mean_raw_2024 = rowMeans(count_matrix[, year_vec == "2024", drop = FALSE]),
+  mean_raw_2025 = rowMeans(count_matrix[, year_vec == "2025", drop = FALSE]),
+  mean_cpm_2024 = rowMeans(cpm_matrix[, year_vec == "2024", drop = FALSE]),
+  mean_cpm_2025 = rowMeans(cpm_matrix[, year_vec == "2025", drop = FALSE])
+) %>%
+  mutate(log2_ratio_raw = log2((mean_raw_2025 + 1) / (mean_raw_2024 + 1)),
+         log2_ratio_cpm = log2((mean_cpm_2025 + 0.1) / (mean_cpm_2024 + 0.1)))
+write_csv(gene_year_tbl, file.path(out_dir, "year_gene_mean_counts.csv"))
+
+# summary over genes expressed in either year
+expressed <- gene_year_tbl %>% filter(mean_raw_2024 >= 10 | mean_raw_2025 >= 10)
+cat("Genes with mean >= 10 counts in either year:", nrow(expressed), "\n")
+expressed %>%
+  summarise(mean_raw_2024 = mean(mean_raw_2024), mean_raw_2025 = mean(mean_raw_2025),
+            median_raw_2024 = median(mean_raw_2024), median_raw_2025 = median(mean_raw_2025),
+            median_log2_ratio_raw = median(log2_ratio_raw),
+            median_log2_ratio_cpm = median(log2_ratio_cpm)) %>%
+  print(width = Inf)
+print(wilcox.test(expressed$mean_raw_2025, expressed$mean_raw_2024, paired = TRUE))
+
+# plot per-sample mean counts per gene and gene-wise 2024 vs 2025 means
+year_colors <- c("2024" = "cyan4", "2025" = "cadetblue4")
+p_samples <- ggplot(sample_totals, aes(year, mean_counts_per_gene)) +
+  geom_boxplot(aes(fill = year), outlier.shape = NA, alpha = 0.6) +
+  geom_jitter(aes(fill = year), width = 0.15, size = 3, shape = 21, color = "white",
+              stroke = 0.6, alpha = 0.7) +
+  stat_summary(fun = mean, geom = "point", shape = 24, size = 4,
+               fill = "white", color = "black", stroke = 1) +
+  ggsignif::geom_signif(comparisons = list(c("2024", "2025")), test = "wilcox.test",
+                        map_signif_level = FALSE, textsize = 4, tip_length = 0.01) +
+  scale_fill_manual(values = year_colors) +
+  labs(x = NULL, y = "Mean raw counts per gene (per sample)") +
+  theme_pubr(base_size = 12) + theme(legend.position = "none")
+p_samples
